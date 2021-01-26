@@ -1,0 +1,2971 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>GroupDocs.Redaction</name>
+  </assembly>
+  <members>
+    <member name="T:GroupDocs.Redaction.Configuration.DocumentFormatConfiguration">
+      <summary>
+            Represents a type reference for <see cref="T:GroupDocs.Redaction.Integration.DocumentFormatInstance" />-derived class and supported file extensions list for faster format detection.
+            </summary>
+      <example>
+            The following example demonstrates how to set properties for a custom format configuration.
+            <code lang="C#">
+            var adobePhotoshopSettings = new DocumentFormatConfiguration();
+            adobePhotoshopSettings.ExtensionFilter = ".psd";
+            adobePhotoshopSettings.DocumentType = typeof(MyAdobePhotoshopFormatInstance);
+            </code></example>
+    </member>
+    <member name="P:GroupDocs.Redaction.Configuration.DocumentFormatConfiguration.ExtensionFilter">
+      <summary>
+            Gets or sets a comma (",") delimited list of file extensions (e.g. ".pdf"), case insensitive.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Configuration.DocumentFormatConfiguration.DocumentType">
+      <summary>
+            Gets or sets the type of a class, inheriting from <see cref="T:GroupDocs.Redaction.Integration.DocumentFormatInstance" />. 
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Configuration.DocumentFormatConfiguration.InitializationData">
+      <summary>
+            Gets or sets data, required for <see cref="T:GroupDocs.Redaction.Integration.DocumentFormatInstance" /> initialization.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Configuration.DocumentFormatConfiguration.#ctor">
+      <summary>
+            Initializes a new instance of DocumentFormatConfiguration class.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Configuration.DocumentFormatConfiguration.SupportsExtension(System.String)">
+      <summary>
+            Checks if a given file extension can be handled as DocumentType.
+            </summary>
+      <param name="fileExtension">File extension, format is ".ext"</param>
+      <returns>True if the extension is listed in ExtensionFilter</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.Configuration.RedactorConfiguration">
+      <summary>
+            Provides access to a list of supported formats, built-in and custom user formats. 
+            </summary>
+      <example>
+            The following example demonstrates how to add a custom user format handler.
+            <code lang="C#">
+            var adobePhotoshopSettings = new DocumentFormatConfiguration();
+            adobePhotoshopSettings.ExtensionFilter = ".psd";
+            adobePhotoshopSettings.DocumentType = typeof(MyAdobePhotoshopFormatInstance);
+            var configuration = RedactorConfiguration.GetInstance();
+            configuration.AvailableFormats.Add(adobePhotoshopSettings);
+            </code></example>
+      <example>
+            The following example demonstrates how to get built-in or custom user format handlers.
+            <code lang="C#">
+            var configuration = RedactorConfiguration.GetInstance();
+            var formatSettings = configuration.FindFormat(".psd");
+            </code></example>
+    </member>
+    <member name="P:GroupDocs.Redaction.Configuration.RedactorConfiguration.AvailableFormats">
+      <summary>
+            Gets a list of recognized formats, see <see cref="T:GroupDocs.Redaction.Configuration.DocumentFormatConfiguration" />.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Configuration.RedactorConfiguration.FindFormat(System.String)">
+      <summary>
+            Finds format configurations for a given file extension.
+            </summary>
+      <param name="fileExtension">File extension, format is ".ext"</param>
+      <returns>If found, instance of <see cref="T:GroupDocs.Redaction.Configuration.DocumentFormatConfiguration" />, null otherwise</returns>
+      <example>
+            The following example demonstrates how to get built-in or custom user format handlers.
+            <code lang="C#">
+            var configuration = RedactorConfiguration.GetInstance();
+            var formatSettings = configuration.FindFormat(".psd");
+            </code></example>
+    </member>
+    <member name="M:GroupDocs.Redaction.Configuration.RedactorConfiguration.GetInstance">
+      <summary>
+            Provides a singleton instance with default configuration of built-in formats.
+            </summary>
+      <returns>Configuration instance</returns>
+      <example>
+            The following example demonstrates how to add a custom format handler.
+            <code lang="C#">
+            var adobePhotoshopSettings = new DocumentFormatConfiguration();
+            adobePhotoshopSettings.ExtensionFilter = ".psd";
+            adobePhotoshopSettings.DocumentType = typeof(MyAdobePhotoshopFormatInstance);
+            var configuration = RedactorConfiguration.GetInstance();
+            configuration.AvailableFormats.Add(adobePhotoshopSettings);
+            </code></example>
+    </member>
+    <member name="T:GroupDocs.Redaction.Configuration.NamespaceDoc">
+      <summary>
+            The <see cref="N:GroupDocs.Redaction.Configuration" /> namespace provides document format configuration classes.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Redaction.DocumentInfo">
+      <summary>
+            Represents an information about document. Implements IDocumentInfo interface. See <see cref="T:GroupDocs.Redaction.IDocumentInfo" /> for examples.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.DocumentInfo.FileType">
+      <summary>
+    Gets the file format description.
+    </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.DocumentInfo.PageCount">
+      <summary>
+    Gets the total page count.
+    </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.DocumentInfo.Size">
+      <summary>
+    Gets the document size in bytes.
+    </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.DocumentInfo.Pages">
+      <summary>
+    Gets the list of <see cref="T:GroupDocs.Redaction.PageInfo" /> page information.
+    </summary>
+    </member>
+    <member name="T:GroupDocs.Redaction.Exceptions.DocumentFormatException">
+      <summary>
+            The exception that is thrown when document format is not recognized or is invalid.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Exceptions.DocumentFormatException.#ctor(System.String)">
+      <summary>
+            Initializes a new instance of DocumentFormatException class.
+            </summary>
+      <param name="message">Message, describing exception context</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Exceptions.DocumentFormatException.#ctor(System.String,System.Exception)">
+      <summary>
+            Initializes a new instance of DocumentFormatException class with a specified error message and a reference to the inner exception that is the cause of this exception.
+            </summary>
+      <param name="message">Message, describing exception context</param>
+      <param name="innerException">Inner exception</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Exceptions.DocumentFormatException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Initializes a new instance of the DocumentFormatException class with serialized data.
+            </summary>
+      <param name="info">The object that holds the serialized object data</param>
+      <param name="context">The contextual information about the source or destination</param>
+    </member>
+    <member name="T:GroupDocs.Redaction.Exceptions.GroupDocsRedactionException">
+      <summary>
+            Represents base exception for all GroupDocs.Redaction exceptions.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Exceptions.GroupDocsRedactionException.#ctor(System.String)">
+      <summary>
+            Initializes a new instance of GroupDocsRedactionException class.
+            </summary>
+      <param name="message">Message, describing exception context</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Exceptions.GroupDocsRedactionException.#ctor(System.String,System.Exception)">
+      <summary>
+            Initializes a new instance of GroupDocsRedactionException class with a specified error message and a reference to the inner exception that is the cause of this exception.
+            </summary>
+      <param name="message">Message, describing exception context</param>
+      <param name="innerException">Inner exception</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Exceptions.GroupDocsRedactionException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Initializes a new instance of GroupDocsRedactionException class with serialized data.
+            </summary>
+      <param name="info">The object that holds the serialized object data</param>
+      <param name="context">The contextual information about the source or destination</param>
+    </member>
+    <member name="T:GroupDocs.Redaction.Exceptions.IncorrectPasswordException">
+      <summary>
+            The exception that is thrown when specified password is incorrect.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Exceptions.IncorrectPasswordException.#ctor">
+      <summary>
+            Initializes a new instance of IncorrectPasswordException class.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Exceptions.IncorrectPasswordException.#ctor(System.String,System.Exception)">
+      <summary>
+            Initializes a new instance of IncorrectPasswordException class with a specified error message and a reference to the inner exception that is the cause of this exception.
+            </summary>
+      <param name="message">Message, describing exception context</param>
+      <param name="innerException">Inner exception</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Exceptions.IncorrectPasswordException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Initializes a new instance of IncorrectPasswordException class with serialized data.
+            </summary>
+      <param name="info">The object that holds the serialized object data</param>
+      <param name="context">The contextual information about the source or destination</param>
+    </member>
+    <member name="T:GroupDocs.Redaction.Exceptions.PasswordRequiredException">
+      <summary>
+            The exception that is thrown when password is required to load the document.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Exceptions.PasswordRequiredException.#ctor">
+      <summary>
+            Initializes a new instance of PasswordRequiredException class.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Exceptions.PasswordRequiredException.#ctor(System.String,System.Exception)">
+      <summary>
+            Initializes a new instance of PasswordRequiredException class with a specified error message and a reference to the inner exception that is the cause of this exception.
+            </summary>
+      <param name="message">Message, describing exception context</param>
+      <param name="innerException">Inner exception</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Exceptions.PasswordRequiredException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Initializes a new instance of PasswordRequiredException class with serialized data.
+            </summary>
+      <param name="info">The object that holds the serialized object data</param>
+      <param name="context">The contextual information about the source or destination</param>
+    </member>
+    <member name="T:GroupDocs.Redaction.Exceptions.TrialLimitationsException">
+      <summary>
+            The exception that is thrown when user violates trial mode limitations.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Exceptions.TrialLimitationsException.#ctor(System.String)">
+      <summary>
+            Initializes a new instance of TrialLimitationsException class.
+            </summary>
+      <param name="message">Message, describing violated limitation</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Exceptions.TrialLimitationsException.#ctor(System.String,System.Exception)">
+      <summary>
+            Initializes a new instance of TrialLimitationsException class with a specified error message and a reference to the inner exception that is the cause of this exception.
+             </summary>
+      <param name="message">Message, describing exception context</param>
+      <param name="innerException">Inner exception</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Exceptions.TrialLimitationsException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Initializes a new instance of TrialLimitationsException class with serialized data.
+            </summary>
+      <param name="info">The object that holds the serialized object data</param>
+      <param name="context">The contextual information about the source or destination</param>
+    </member>
+    <member name="T:GroupDocs.Redaction.Exceptions.NamespaceDoc">
+      <summary>
+            The <see cref="N:GroupDocs.Redaction.Exceptions" /> namespace provides different exceptions classes.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Redaction.FileType">
+      <summary>
+            Represents a file type. Provides methods to obtain a list of all file types supported by GroupDocs.Redaction, detect file type by extension, etc.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.FileFormat">
+      <summary>
+            Gets file type name e.g. "Microsoft Word Document".
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.Extension">
+      <summary>
+            Gets filename suffix (including the period ".") e.g. ".doc".
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.Unknown">
+      <summary>
+            Represents unknown file type.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.TIF">
+      <summary>
+            Tagged Image File (.tif)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.TIFF">
+      <summary>
+            Tagged Image File Format (.tiff)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.JPG">
+      <summary>
+            JPEG Image (.jpg)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.JPEG">
+      <summary>
+            JPEG Image (.jpeg)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.PNG">
+      <summary>
+            Portable Network Graphic (.png)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.GIF">
+      <summary>
+            Graphical Interchange Format File (.gif)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.BMP">
+      <summary>
+            Bitmap Image File (.bmp)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.JP2">
+      <summary>
+            JPEG 2000 Core Image File (.jp2)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.PDF">
+      <summary>
+            Portable Document Format File (.pdf)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.PPT">
+      <summary>
+            PowerPoint Presentation (.ppt)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.PPTX">
+      <summary>
+            PowerPoint Open XML Presentation (.pptx)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.ODP">
+      <summary>
+            OpenDocument Presentation (.odp)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.XLS">
+      <summary>
+            Excel Spreadsheet (.xls)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.XLSX">
+      <summary>
+            Microsoft Excel Open XML Spreadsheet (.xlsx)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.XLSM">
+      <summary>
+            Excel Open XML Macro-Enabled Spreadsheet (.xlsm)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.XLSB">
+      <summary>
+            Excel Binary Spreadsheet (.xlsb)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.CSV">
+      <summary>
+            Comma Separated Values File (.csv)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.TSV">
+      <summary>
+            Tab Separated Values File (.tsv)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.ODS">
+      <summary>
+            OpenDocument Spreadsheet (.ods)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.OTS">
+      <summary>
+            OpenDocument Spreadsheet Template (.ots)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.NUMBERS">
+      <summary>
+            Apple Numbers Spreadsheet (.numbers)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.DOC">
+      <summary>
+            Microsoft Word Document (.doc)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.DOCX">
+      <summary>
+            Microsoft Word Open XML Document (.docx)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.DOCM">
+      <summary>
+            Word Open XML Macro-Enabled Document (.docm)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.DOT">
+      <summary>
+            Word Document Template (.dot)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.DOTX">
+      <summary>
+            Word Open XML Document Template (.dotx)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.DOTM">
+      <summary>
+            Word Open XML Macro-Enabled Document Template (.dotm)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.RTF">
+      <summary>
+            Rich Text Format File (.rtf)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.TXT">
+      <summary>
+            Plain Text File (.txt)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.ODT">
+      <summary>
+            OpenDocument Text Document (.odt)
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.FileType.OTT">
+      <summary>
+            OpenDocument Document Template (.ott)
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.FileType.FromExtension(System.String)">
+      <summary>
+            Maps file extension to file type.
+            </summary>
+      <param name="extension">File extension (including the period ".").</param>
+      <exception cref="T:System.ArgumentException">Thrown when <paramref name="extension" /> is null or empty string.</exception>
+      <returns>When file type is supported returns it, otherwise returns default <see cref="P:GroupDocs.Redaction.FileType.Unknown" /> file type.</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.FileType.GetSupportedFileTypes">
+      <summary>
+            Retrieves supported file types
+            </summary>
+      <returns>Returns sequence of supported file types</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.FileType.Equals(GroupDocs.Redaction.FileType)">
+      <summary>
+            Determines whether the current <see cref="T:GroupDocs.Redaction.FileType" /> is the same as specified <see cref="T:GroupDocs.Redaction.FileType" /> object.
+            </summary>
+      <param name="other">The object to compare with the current <see cref="T:GroupDocs.Redaction.FileType" /> object.</param>
+      <returns>
+        <code>true</code> if both <see cref="T:GroupDocs.Redaction.FileType" /> objects are the same; otherwise, <code>false</code></returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.FileType.Equals(System.Object)">
+      <summary>
+            Determines whether the current <see cref="T:GroupDocs.Redaction.FileType" /> is the same as specified object.
+            </summary>
+      <param name="obj">The object to compare with the current <see cref="T:GroupDocs.Redaction.FileType" /> object.</param>
+      <returns>
+        <code>true</code> if <code>obj</code> parameter is <see cref="T:GroupDocs.Redaction.FileType" /> and is the same as current <see cref="T:GroupDocs.Redaction.FileType" /> object; otherwise, <code>false</code></returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.FileType.GetHashCode">
+      <summary>
+            Returns the hash code for the current <see cref="T:GroupDocs.Redaction.FileType" /> object.
+            </summary>
+      <returns>A hash code for the current <see cref="T:GroupDocs.Redaction.FileType" /> object.</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.FileType.op_Equality(GroupDocs.Redaction.FileType,GroupDocs.Redaction.FileType)">
+      <summary>
+            Determines whether two <see cref="T:GroupDocs.Redaction.FileType" /> objects are the same.
+            </summary>
+      <param name="left">Left <see cref="T:GroupDocs.Redaction.FileType" /> object.</param>
+      <param name="right">Right <see cref="T:GroupDocs.Redaction.FileType" /> object.</param>
+      <returns>
+        <code>true</code> if both <see cref="T:GroupDocs.Redaction.FileType" /> objects are the same; otherwise, <code>false</code></returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.FileType.op_Inequality(GroupDocs.Redaction.FileType,GroupDocs.Redaction.FileType)">
+      <summary>
+            Determines whether two <see cref="T:GroupDocs.Redaction.FileType" /> objects are not the same.
+            </summary>
+      <param name="left">Left <see cref="T:GroupDocs.Redaction.FileType" /> object.</param>
+      <param name="right">Right <see cref="T:GroupDocs.Redaction.FileType" /> object.</param>
+      <returns>
+        <code>true</code> if both <see cref="T:GroupDocs.Redaction.FileType" /> objects are not the same; otherwise, <code>false</code></returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.FileType.ToString">
+      <summary>
+            Returns a string that represents the current object.
+            </summary>
+      <returns>A string that represents the current object.</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.IDocumentInfo">
+      <summary>
+            Defines methods that are required for getting basic document information.
+            </summary>
+      <example>
+        <para>The following example demonstrates how to retrieve the general document information using <see cref="T:GroupDocs.Redaction.IDocumentInfo" />.</para>
+        <code lang="C#">
+    try
+    {
+        using (Redactor red = new Redactor(@"C:\Temp\testfile.doc"))
+        {
+            IDocumentInfo docInfo = red.GetDocumentInfo();
+            Console.WriteLine("Document size: {0}", docInfo.Size);
+            Console.WriteLine("Document format: {0}", docInfo.FileType.FileFormat);
+            Console.WriteLine("Document contains {0} pages", docInfo.PageCount);
+            foreach (PageInfo page in docInfo.Pages)
+            {
+                Console.WriteLine("Page {0} size is {1}x{2}", page.PageNumber, page.Width, page.Height);
+            }
+        }
+    }
+    catch (GroupDocs.Redaction.Exceptions.PasswordRequiredException)
+    {
+        Console.WriteLine("You are trying to access document which is password protected. Please, set the password.");
+    }
+    catch (GroupDocs.Redaction.Exceptions.IncorrectPasswordException)
+    {
+        Console.WriteLine("The provided password is not valid.");
+    }
+    </code>
+      </example>
+    </member>
+    <member name="P:GroupDocs.Redaction.IDocumentInfo.FileType">
+      <summary>
+    Gets the file format description.
+    </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.IDocumentInfo.PageCount">
+      <summary>
+    Gets the total page count.
+    </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.IDocumentInfo.Size">
+      <summary>
+    Gets the document size in bytes.
+    </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.IDocumentInfo.Pages">
+      <summary>
+    Gets the list of <see cref="T:GroupDocs.Redaction.PageInfo" /> page information.
+    </summary>
+    </member>
+    <member name="T:GroupDocs.Redaction.Integration.DocumentFormatInstance">
+      <summary>
+            Represents a specific format of a document. Implement this class to add your own document types.
+            </summary>
+      <example>
+            The following example demonstrates how to create an empty stub for a custom format handler.
+            <code lang="C#">
+            public class DummyDocument : DocumentFormatInstance
+            {     
+                public override void Load(Stream output)
+                {
+                    // load file content
+                }
+            
+                public override void Save(Stream output)
+                {
+                    // save changes to file;
+                }
+            }
+            </code><para>The following example demonstrates how to use the initialization data.</para><code lang="C#">
+     public class MyCustomHandler : DocumentFormatInstance
+     {
+         private string MyProperty { get; set; }
+         
+         // Other custom code 
+         ...
+     
+         public override void Initialize(DocumentFormatConfiguration config)
+         {
+             base.Initialize(config);
+             if (config.InitializationData.ContainsKey("MyProperty"))
+             {
+                 MyProperty = config.InitializationData["MyProperty"];
+             }
+         }
+     }
+     
+     // Plugging custom format into GroupDocs.Redaction
+     var mySettings = new DocumentFormatConfiguration();
+     mySettings.ExtensionFilter = ".foo";
+     mySettings.DocumentType = typeof(MyCustomHandler);
+     mySettings.InitializationData.Add("MyProperty", "bar");
+     var configuration = RedactorConfiguration.GetInstance();
+     configuration.AvailableFormats.Add(mySettings);
+     </code></example>
+    </member>
+    <member name="P:GroupDocs.Redaction.Integration.DocumentFormatInstance.Password">
+      <summary>
+            Gets or sets a password for password protected documents.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.DocumentFormatInstance.Initialize(GroupDocs.Redaction.Configuration.DocumentFormatConfiguration,GroupDocs.Redaction.Options.RedactorSettings)">
+      <summary>
+            Performs initialization of the instance of document format handler.
+            </summary>
+      <param name="config">Format configuration</param>
+      <param name="settings">Default settings for redaction process.</param>
+      <example>
+        <para>The following example demonstrates how to use the initialization data.</para>
+        <code lang="C#">
+     public class MyCustomHandler : DocumentFormatInstance
+     {
+         private string MyProperty { get; set; }
+         
+         // Other custom code 
+         ...
+     
+         public override void Initialize(DocumentFormatConfiguration config)
+         {
+             base.Initialize(config);
+             if (config.InitializationData.ContainsKey("MyProperty"))
+             {
+                 MyProperty = config.InitializationData["MyProperty"];
+             }
+         }
+     }
+     
+     // Plugging custom format into GroupDocs.Redaction
+     var mySettings = new DocumentFormatConfiguration();
+     mySettings.ExtensionFilter = ".foo";
+     mySettings.DocumentType = typeof(MyCustomHandler);
+     mySettings.InitializationData.Add("MyProperty", "bar");
+     var configuration = RedactorConfiguration.GetInstance();
+     configuration.AvailableFormats.Add(mySettings);
+     </code>
+      </example>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.DocumentFormatInstance.Load(System.IO.Stream)">
+      <summary>
+    Loads the document from a stream.
+    </summary>
+      <param name="input">Stream to read from</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.DocumentFormatInstance.Save(System.IO.Stream)">
+      <summary>
+    Saves the document to a stream.
+    </summary>
+      <param name="output">Target stream to save the document</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.DocumentFormatInstance.SetAccessGranted(System.Boolean)">
+      <summary>
+            Sets a validation status, if the document requires password.
+            </summary>
+      <param name="isGranted">True, if password is correct</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.DocumentFormatInstance.IsRedactionAccepted(GroupDocs.Redaction.Redactions.RedactionDescription)">
+      <summary>
+            Checks for <see cref="T:GroupDocs.Redaction.Redactions.IRedactionCallback" /> implementation and invokes it, if specified.
+            </summary>
+      <param name="description">Redaction description</param>
+      <returns>True (by default) if redaction is accepted</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.DocumentFormatInstance.PerformBinaryCheck(System.IO.Stream)">
+      <summary>
+    Checks if the given stream contains a document, supported by this format instance.
+    </summary>
+      <param name="input">Document content stream</param>
+      <returns>True, if the document can be loaded by this format instance and false otherwise</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.Integration.IAnnotatedDocument">
+      <summary>
+            Defines methods that are required for access to annotations, such as comments. Needs to be implemented by <see cref="T:GroupDocs.Redaction.Integration.DocumentFormatInstance" />-derived class to perform annotation redactions. 
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.IAnnotatedDocument.RedactAnnotation(System.Text.RegularExpressions.Regex,System.String)">
+      <summary>
+    Replaces the matching text in all annotations within the document.
+    </summary>
+      <param name="regularExpression">Regular expression to search and replace</param>
+      <param name="replacement">Textual replacement</param>
+      <returns>Replacement result</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.IAnnotatedDocument.DeleteAnnotations(System.Text.RegularExpressions.Regex)">
+      <summary>
+    Deletes all annotations, matching regular expression within the document.
+    </summary>
+      <param name="regularExpression">Regular expression to match</param>
+      <returns>Deletion result</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.Integration.ICellularFormatInstance">
+      <summary>
+            Defines methods that are required for access to spreadsheet formats, having one or many worksheets.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.ICellularFormatInstance.GetSheetIndex(System.String)">
+      <summary>
+    Gets the worksheet index by worksheet name, if possible.
+    </summary>
+      <param name="sheetName">Worksheet name</param>
+      <returns>Worksheet index or -1 if not found</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.ICellularFormatInstance.ReplaceInColumn(System.Text.RegularExpressions.Regex,System.String,System.Int32,System.Int32)">
+      <summary>
+    Replaces all matches with a given replacement in the specified column and worksheet.
+    </summary>
+      <param name="regularExpression">Regular expression to search and replace</param>
+      <param name="replacement">Textual replacement</param>
+      <param name="column">Zero-based column index</param>
+      <param name="sheet">Zero-based worksheet index</param>
+      <returns>Replacement result</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.ICellularFormatInstance.ReplaceInColumn(System.Text.RegularExpressions.Regex,System.String,System.Int32)">
+      <summary>
+    Replaces all matches with a given replacement in the specified column on all worksheets.
+    </summary>
+      <param name="regularExpression">Regular expression to search and replace</param>
+      <param name="replacement">Textual replacement</param>
+      <param name="column">Zero-based column index</param>
+      <returns>Replacement result</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.Integration.IImageFormatInstance">
+      <summary>
+            Defines methods that are required for raster image format redactions.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.IImageFormatInstance.EditArea(System.Drawing.Point,GroupDocs.Redaction.Redactions.RegionReplacementOptions)">
+      <summary>
+    Replaces the area at given point with a rectangle of specific color and size.
+    </summary>
+      <param name="topLeft">Top-left corner coordinates of filled area</param>
+      <param name="options">Color and size settings</param>
+      <returns>Image area redaction result</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.Integration.IMetadataAccess">
+      <summary>
+            Defines methods that are required for access to metadata of a document, if format supports it.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.IMetadataAccess.GetMetadata">
+      <summary>
+    Retrieves a dictionary with document's metadata.
+    </summary>
+      <returns>Plain dictionary with metadata</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.IMetadataAccess.ChangeMetadata(GroupDocs.Redaction.Integration.MetadataItem)">
+      <summary>
+    Changes the specified item of metadata from <see cref="T:GroupDocs.Redaction.Integration.MetadataCollection" /> or adds a new one, if not present.
+    </summary>
+      <param name="metadataItem">Metadata item with a new value assigned to it</param>
+      <returns>Metadata redaction result</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.Integration.IRasterizableDocument">
+      <summary>
+            Defines methods that are required for saving document in any binary form. Built-in types save a document as a PDF with images of its pages.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.IRasterizableDocument.Rasterize(System.IO.Stream)">
+      <summary>
+    Saves the document to a stream as a PDF.
+    </summary>
+      <param name="output">Target stream</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.IRasterizableDocument.Rasterize(System.IO.Stream,GroupDocs.Redaction.Options.RasterizationOptions)">
+      <summary>
+    Saves the document to a stream as a PDF with page range and compliance options.
+    </summary>
+      <param name="output">Target stream</param>
+      <param name="options">PDF conversion options</param>
+    </member>
+    <member name="T:GroupDocs.Redaction.Integration.ITextualFormatInstance">
+      <summary>
+            Defines methods that are required for redacting textual data in any document, containing text.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.ITextualFormatInstance.ReplaceText(System.Text.RegularExpressions.Regex,GroupDocs.Redaction.Redactions.ReplacementOptions)">
+      <summary>
+    Replaces all matches of the regular expression with a given replacement.
+    </summary>
+      <param name="regularExpression">Regular expression to search and replace</param>
+      <param name="options">
+        <see cref="T:GroupDocs.Redaction.Redactions.ReplacementOptions" /> allow to set textual replacement or color for redaction block</param>
+      <returns>Text replacement result</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.Integration.MetadataCollection">
+      <summary>
+            Represents a dictiоnary of <see cref="T:GroupDocs.Redaction.Integration.MetadataItem" /> with its title as a key.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.MetadataCollection.#ctor">
+      <summary>
+            Initializes a new instance of MetadataCollection class.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.MetadataCollection.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Initializes a new instance of MetadataCollection class with serialized data.
+            </summary>
+      <param name="info">The object that holds the serialized object data</param>
+      <param name="context">The contextual information about the source or destination</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.MetadataCollection.AddRange(GroupDocs.Redaction.Integration.MetadataCollection)">
+      <summary>
+            Adds a specified collection of MetadataItem objects to this instance.
+            </summary>
+      <param name="items">A collection of MetadataItem instances</param>
+    </member>
+    <member name="T:GroupDocs.Redaction.Integration.MetadataItem">
+      <summary>
+            Represents an item of metadata, common for all supported formats and used in metadata redactions.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Integration.MetadataItem.OriginalName">
+      <summary>
+            Gets or sets an original name of the metadata item, as it appears in the document.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Integration.MetadataItem.Filter">
+      <summary>
+            Gets or sets a value of <see cref="T:GroupDocs.Redaction.Redactions.MetadataFilters" />, assigned to this metadata item. Used in items filtration.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Integration.MetadataItem.Values">
+      <summary>
+            Gets or sets the metadata item value.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Integration.MetadataItem.IsCustom">
+      <summary>
+            Gets or sets a value indicating whether this item is custom (added by the authors of the document).
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Integration.MetadataItem.DictionaryKey">
+      <summary>
+    Gets a dictionary key for <see cref="T:GroupDocs.Redaction.Integration.MetadataCollection" />, using its OriginalName and other data.
+    </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.MetadataItem.#ctor">
+      <summary>
+    Initializes a new instance.
+    </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.MetadataItem.CreateClone">
+      <summary>
+    Creates a deep clone of current instance.
+    </summary>
+      <returns>Object clone</returns>
+    </member>
+    <member name="P:GroupDocs.Redaction.Integration.MetadataItem.ActualValue">
+      <summary>
+            Gets the string representation of the metadata item value. 
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.MetadataItem.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Initializes a new instance of MetadataItem class with serialized data.
+            </summary>
+      <param name="info">The object that holds the serialized object data</param>
+      <param name="context">The contextual information about the source or destination</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Integration.MetadataItem.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Returns information about serializable properties.
+            </summary>
+      <param name="info">The object that holds the serialized object data</param>
+      <param name="context">The contextual information about the source or destination</param>
+    </member>
+    <member name="T:GroupDocs.Redaction.Integration.NamespaceDoc">
+      <summary>
+            The <see cref="N:GroupDocs.Redaction.Integration" /> namespace provides interfaces and classes, used to integrate documents of different formats with GroupDocs.Redactions.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Redaction.License">
+      <summary>
+            Provides methods for applying license.
+            </summary>
+      <example>
+            The following example demonstrates how to set the license for GroupDocs.Redaction.
+            <code lang="C#">
+            GroupDocs.Redaction.License license = new GroupDocs.Redaction.License();
+            // as an alternative you can use a stream:
+            license.SetLicense(licensePath);
+            </code></example>
+    </member>
+    <member name="M:GroupDocs.Redaction.License.#ctor">
+      <summary>
+            Initialize an instance of License class.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.License.SetLicense(System.String)">
+      <summary>
+            Sets the GroupDocs.Redaction license from a file path.
+            </summary>
+      <param name="licensePath">License file path.</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.License.SetLicense(System.IO.Stream)">
+      <summary>
+            Sets the GroupDocs.Redaction license from a stream.
+            </summary>
+      <param name="licenseStream">License stream.</param>
+    </member>
+    <member name="T:GroupDocs.Redaction.Metered">
+      <summary>
+            Provides methods which allow to activate product with Metered license and retrieve amount of MBs processed.
+            Learn more about Metered licenses <a href="https://purchase.groupdocs.com/faqs/licensing/metered">here</a>.
+            </summary>
+      <example>
+            The following example demonstrates how to activate the product with Metered keys.
+            
+            <ms><code>
+            [C#]
+            
+            Metered matered = new Metered();
+            matered.SetMeteredKey("PublicKey", "PrivateKey");
+            
+            
+            [Visual Basic]
+            
+            Dim matered As Metered = New Metered
+            matered.SetMeteredKey("PublicKey", "PrivateKey")
+            </code></ms><java>
+            the component jar file:
+            <code>
+            Metered matered = new Metered();
+            matered.setMeteredKey("PublicKey", "PrivateKey");
+            </code></java></example>
+    </member>
+    <member name="M:GroupDocs.Redaction.Metered.#ctor">
+      <summary>
+            Initializes a new instance of Metered class.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Metered.SetMeteredKey(System.String,System.String)">
+      <summary>
+            Activates the product with Metered keys.
+            </summary>
+      <param name="publicKey">The public key.</param>
+      <param name="privateKey">The private key.</param>
+      <example>
+            The following example demonstrates how to activate the product with Metered keys.
+            <code lang="C#">
+            string publicKey = "Public Key";
+            string privateKey = "Private Key";
+            
+            Metered metered = new Metered();
+            metered.SetMeteredKey(publicKey, privateKey);
+            </code></example>
+    </member>
+    <member name="M:GroupDocs.Redaction.Metered.GetConsumptionQuantity">
+      <summary>
+             Retrieves the amount of MBs processed.
+             </summary>
+      <returns>consumption quantity</returns>
+      <example>
+             The following example demonstrates how to retrieve the amount of MBs processed.
+             <code lang="C#">
+             string publicKey = "Public Key";
+             string privateKey = "Private Key";
+             
+             Metered metered = new Metered();
+             metered.SetMeteredKey(publicKey, privateKey);
+            
+             decimal mbProcessed = Metered.GetConsumptionQuantity();
+             </code></example>
+    </member>
+    <member name="M:GroupDocs.Redaction.Metered.GetConsumptionCredit">
+      <summary>
+            Gets the consumption credit.
+            </summary>
+      <returns>consumption quantity</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.NamespaceDoc">
+      <summary>
+            The <see cref="N:GroupDocs.Redaction" /> namespace provides classes for redacting sensitive information from documents in PDF, raster image and office document formats.
+            The main classes in this namespace are:
+            <list type="bullet"><item><see cref="T:GroupDocs.Redaction.Redactor" /> is the entry point for redaction process.</item><item><see cref="T:GroupDocs.Redaction.Redaction" /> is abstract base class for all types of document redactions.</item><item><see cref="T:GroupDocs.Redaction.RedactionPolicy" /> is pre-configured in XML set of redaction rules.</item><item><see cref="T:GroupDocs.Redaction.RedactorChangeLog" /> provides information about redaction process results.</item></list></summary>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.NamespaceDoc">
+      <summary>
+            The <see cref="N:GroupDocs.Redaction.Redactions" /> namespace provides classes for different types of redactions.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.AnnotationRedaction">
+      <summary>
+            Represents a redaction that replaces annotation text (comments, etc.) matching a given regular expression.
+            </summary>
+      <example>
+            The following example demonstrates how to replace the name "John" with "[redacted]" in all annotations.
+            <code lang="C#">
+            using (Redactor redactor = new Redactor(@"C:\test.pdf"))
+            {
+               redactor.Apply(new AnnotationRedaction("(?im:john)", "[redacted]"));
+               redactor.Save()
+            }
+            </code></example>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.AnnotationRedaction.Expression">
+      <summary>
+            Gets the regular expression to match.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.AnnotationRedaction.Replacement">
+      <summary>
+            Gets a textual replacement for matched text.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.AnnotationRedaction.Description">
+      <summary>
+    Returns a string, describing the redaction and its parameters.
+    </summary>
+      <returns>Text, containing redaction name and parameters.</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.AnnotationRedaction.#ctor(System.String,System.String)">
+      <summary>
+            Initializes a new instance of AnnotationRedaction class.
+            </summary>
+      <param name="pattern">Regular expression to match</param>
+      <param name="replacement">Textual replacement for matched text</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.AnnotationRedaction.#ctor(System.Text.RegularExpressions.Regex,System.String)">
+      <summary>
+            Initializes a new instance of AnnotationRedaction class.
+            </summary>
+      <param name="regex">Regular expression to match</param>
+      <param name="replacement">Textual replacement for matched text</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.AnnotationRedaction.ApplyTo(GroupDocs.Redaction.Integration.DocumentFormatInstance)">
+      <summary>
+    Applies the redaction to a given format instance.
+    </summary>
+      <param name="formatInstance">An instance of a document to apply redaction</param>
+      <returns>Status of the redaction: success/failure and error message if any</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.CellColumnRedaction">
+      <summary>
+            Represents a text redaction that replaces text in a spreadsheet documents (CSV, Excel, etc.).
+            </summary>
+      <example>
+            The following example demonstrates removing user emails from a second column on "Customers" worksheet of a spreadsheet document.
+            <code lang="C#">
+            using (Redactor redactor = new Redactor("D:\\Sales in September.xslx"))
+            {
+               var filter = new CellFilter()
+               {
+                   ColumnIndex = 1, // zero-based 2nd column
+                   WorkSheetName = "Customers"
+               };
+               var expression = new Regex("^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$");
+               RedactorChangeLog changeLog = redactor.Apply(new CellColumnRedaction(filter, expression, new ReplacementOptions("[customer email]")));
+               if (result.Status != RedactionStatus.Failed)
+               {
+                  doc.Save(new SaveOptions() { AddSuffix = true });
+               };
+            }
+            </code></example>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.CellColumnRedaction.Pattern">
+      <summary>
+            Gets the regular expression to match.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.CellColumnRedaction.Filter">
+      <summary>
+            Gets the column and worksheet filter.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.CellColumnRedaction.Description">
+      <summary>
+    Returns a string, describing the redaction and its parameters.
+    </summary>
+      <returns>Text, containing redaction name and parameters.</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.CellColumnRedaction.#ctor(GroupDocs.Redaction.Redactions.CellFilter,System.Text.RegularExpressions.Regex,GroupDocs.Redaction.Redactions.ReplacementOptions)">
+      <summary>
+            Initializes a new instance of CellColumnRedaction class.
+            </summary>
+      <param name="filter">Column and worksheet filter</param>
+      <param name="regEx">Regular expression to search and replace</param>
+      <param name="options">Replacement options</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.CellColumnRedaction.ApplyTo(GroupDocs.Redaction.Integration.DocumentFormatInstance)">
+      <summary>
+    Applies the redaction to a given format instance.
+    </summary>
+      <param name="formatInstance">An instance of a document to apply redaction</param>
+      <returns>Status of the redaction: success/failure and error message if any</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.CellFilter">
+      <summary>
+            Provides an option to limit the scope of a <see cref="T:GroupDocs.Redaction.Redactions.CellColumnRedaction" /> to a worksheet and a column.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.CellFilter.NoIndex">
+      <summary>
+            Represents a default value for filter, which is -1. 
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.CellFilter.WorkSheetName">
+      <summary>
+            Gets or sets a worksheet name (if applicable).
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.CellFilter.WorkSheetIndex">
+      <summary>
+            Gets or sets a worksheet index (zero-based).
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.CellFilter.HasWorkSheetIndex">
+      <summary>
+            Gets a value indicating whether the <see cref="P:GroupDocs.Redaction.Redactions.CellFilter.WorkSheetIndex" /> is set or not.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.CellFilter.ColumnIndex">
+      <summary>
+            Gets or sets a column index (zero-based).
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.CellFilter.#ctor">
+      <summary>
+    Initializes a new instance.
+    </summary>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.DeleteAnnotationRedaction">
+      <summary>
+            Represents a text redaction that deletes annotations if text is matching given regular expression (optionally deletes all annotations).
+            </summary>
+      <example>
+            The following example demonstrates how to remove all annotations containing words "use", "show" or "describe" from document (and leave others).
+            <code lang="C#">
+            using (Redactor redactor = new Redactor(@"D:\test.docx"))
+            {
+               redactor.Apply(new DeleteAnnotationRedaction("(?im:(use|show|describe))"));
+               redactor.Save()
+            }
+            </code></example>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.DeleteAnnotationRedaction.Expression">
+      <summary>
+            Gets the regular expression to match.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.DeleteAnnotationRedaction.Description">
+      <summary>
+    Returns a string, describing the redaction and its parameters.
+    </summary>
+      <returns>Text, containing redaction name and parameters.</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.DeleteAnnotationRedaction.#ctor">
+      <summary>
+            Initializes a new instance of DeleteAnnotationRedaction class, with settings to delete all annotations (matching everything).
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.DeleteAnnotationRedaction.#ctor(System.String)">
+      <summary>
+            Initializes a new instance of DeleteAnnotationRedaction class, deleting annotations matching given expression.
+            </summary>
+      <param name="pattern">Regular expression</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.DeleteAnnotationRedaction.#ctor(System.Text.RegularExpressions.Regex)">
+      <summary>
+            Initializes a new instance of DeleteAnnotationRedaction class, deleting annotations matching given expression.
+            </summary>
+      <param name="regex">Regular expression</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.DeleteAnnotationRedaction.ApplyTo(GroupDocs.Redaction.Integration.DocumentFormatInstance)">
+      <summary>
+    Applies the redaction to a given format instance.
+    </summary>
+      <param name="formatInstance">An instance of a document to apply redaction</param>
+      <returns>Status of the redaction: success/failure and error message if any</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.EraseMetadataRedaction">
+      <summary>
+            Represents a metadata redaction that erases all metadata or metadata matching specific MetadataFilters from the document.
+            </summary>
+      <example>
+            The following example demonstrates how to erase (set equal to empty values) all or specific metadata. 
+            <code lang="C#">
+            using (Redactor redactor = new Redactor(@"C:\sample.docx"))
+            {
+               // Erase Author, Manager and Company
+               redactor.Apply(new EraseMetadataRedaction(MetadataFilters.Author | MetadataFilters.Manager | MetadataFilters.Company));
+               // Erase all metadata
+               redactor.Apply(new EraseMetadataRedaction(MetadataFilters.All));
+               redactor.Save();
+            }
+            </code></example>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.EraseMetadataRedaction.Description">
+      <summary>
+    Returns a string, describing the redaction and its parameters.
+    </summary>
+      <returns>Text, containing redaction name and parameters.</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.EraseMetadataRedaction.#ctor">
+      <summary>
+            Initializes a new instance of EraseMetadataRedaction class, erasing all metadata.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.EraseMetadataRedaction.#ctor(GroupDocs.Redaction.Redactions.MetadataFilters)">
+      <summary>
+            Initializes a new instance of EraseMetadataRedaction class, erasing metadata, matching specific combination of <see cref="T:GroupDocs.Redaction.Redactions.MetadataFilters" />. 
+            </summary>
+      <param name="filter">Filter for metadata to erase</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.EraseMetadataRedaction.IsApplicableTo(GroupDocs.Redaction.Integration.MetadataItem)">
+      <summary>
+    Checks if this redaction could be applied to a given metadata item.
+    </summary>
+      <param name="item">Metadata item</param>
+      <returns>True if redaction can be applied</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.EraseMetadataRedaction.ApplyTo(GroupDocs.Redaction.Integration.MetadataItem,GroupDocs.Redaction.Integration.IMetadataAccess)">
+      <summary>
+    Applies the redaction to a given metadata item.
+    </summary>
+      <param name="item">Metadata item</param>
+      <param name="metadata">Metadata access <see cref="T:GroupDocs.Redaction.Integration.DocumentFormatInstance" /></param>
+      <returns>Redaction result</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.ExactPhraseRedaction">
+      <summary>
+            Represents a text redaction that replaces exact phrase in the document's text, case insensitive by default.
+            </summary>
+      <example>
+            The following example demonstrates performing case-sensitive phrase search and replacement.
+            <code lang="C#">
+            using (Redactor redactor = new Redactor(@"C:\sample.pdf"))
+            {
+              // By default, isCaseSensitive = false;
+              doc.Apply(new ExactPhraseRedaction("John Doe", true /*isCaseSensitive*/, new ReplacementOptions("[personal]")));
+              doc.Save();
+            }
+            </code>
+            The following example demonstrates replacing phrase (case insensitive) with solid red rectangle.
+            <code lang="C#">
+            using (Redactor redactor = new Redactor(@"C:\sample.pdf"))
+            {
+              // By default, isCaseSensitive = false;
+              doc.Apply(new ExactPhraseRedaction("John Doe", new ReplacementOptions(System.Drawing.Color.Red)));
+              doc.Save();
+            }
+            </code></example>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.ExactPhraseRedaction.SearchPhrase">
+      <summary>
+            Gets the string to search and replace.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.ExactPhraseRedaction.IsCaseSensitive">
+      <summary>
+            Gets a value indicating whether the search is case-sensitive or not.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.ExactPhraseRedaction.Description">
+      <summary>
+    Returns a string, describing the redaction and its parameters.
+    </summary>
+      <returns>Text, containing redaction name and parameters.</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.ExactPhraseRedaction.#ctor(System.String,GroupDocs.Redaction.Redactions.ReplacementOptions)">
+      <summary>
+            Initializes a new instance of ExactPhraseRedaction class in case insensitive mode.
+            </summary>
+      <param name="searchPhrase">String to search and replace</param>
+      <param name="options">Replacement options (textual, color)</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.ExactPhraseRedaction.#ctor(System.String,System.Boolean,GroupDocs.Redaction.Redactions.ReplacementOptions)">
+      <summary>
+            Initializes a new instance of ExactPhraseRedaction class.
+            </summary>
+      <param name="searchPhrase">String to search and replace</param>
+      <param name="isCaseSensitive">True if case sensitive search is required</param>
+      <param name="options">Replacement options (textual, color)</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.ExactPhraseRedaction.ApplyTo(GroupDocs.Redaction.Integration.DocumentFormatInstance)">
+      <summary>
+    Applies the redaction to a given format instance.
+    </summary>
+      <param name="formatInstance">An instance of a document to apply redaction</param>
+      <returns>Status of the redaction: success/failure and error message if any</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.ImageAreaRedaction">
+      <summary>
+            Represents a redaction that places colored rectangle in given area of an image document. 
+            </summary>
+      <example>
+        <para>The following example demonstrates replacing an area within the image with a solid color rectangle.</para>
+        <code lang="C#">
+    using (Redactor redactor = new Redactor("D:\\test.jpg"))
+    {
+       System.Drawing.Point samplePoint = new System.Drawing.Point(516, 311);
+       System.Drawing.Size sampleSize = new System.Drawing.Size(170, 35);
+       RedactorChangeLog result = redactor.Apply(new ImageAreaRedaction(samplePoint,
+                     new RegionReplacementOptions(System.Drawing.Color.Blue, sampleSize)));
+       if (result.Status != RedactionStatus.Failed)
+       {
+          redactor.Save();
+       };
+    } 
+    </code>
+      </example>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.ImageAreaRedaction.Options">
+      <summary>
+            Gets the <see cref="T:GroupDocs.Redaction.Redactions.RegionReplacementOptions" /> options with color and area parameters.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.ImageAreaRedaction.TopLeft">
+      <summary>
+            Gets the top-left position of the area to remove
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.ImageAreaRedaction.Description">
+      <summary>
+    Returns a string, describing the redaction and its parameters.
+    </summary>
+      <returns>Text, containing redaction name and parameters.</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.ImageAreaRedaction.#ctor(System.Drawing.Point,GroupDocs.Redaction.Redactions.RegionReplacementOptions)">
+      <summary>
+            Initializes a new instance of ImageAreaRedaction class for redacting specific area size.
+            </summary>
+      <param name="topLeft">Top-left area coordinates</param>
+      <param name="options">Area size and color</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.ImageAreaRedaction.ApplyTo(GroupDocs.Redaction.Integration.DocumentFormatInstance)">
+      <summary>
+    Applies the redaction to a given format instance.
+    </summary>
+      <param name="formatInstance">An instance of a document to apply redaction</param>
+      <returns>Status of the redaction: success/failure and error message if any</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.IRedactionCallback">
+      <summary>
+            Defines methods that are required for receiving information on each redaction change and optionally prevent it.
+            </summary>
+      <example>
+            The following example demonstrates how to implement detailed logging for redaction process.
+            <code lang="C#">
+            public class RedactionDump : IRedactionCallback
+            {
+                public RedactionDump()
+                {
+                }
+            
+                public bool AcceptRedaction(RedactionDescription description)
+                {
+                    Console.Write("{0} redaction, {1} action, item {2}. ", description.RedactionType, description.ActionType, description.OriginalText);
+                    if (description.Replacement != null)
+                    {
+                        Console.Write("Text {0} is replaced with {1}. ", description.Replacement.OriginalText, description.Replacement.Replacement);
+                    }
+                    Console.WriteLine();
+                    // you can return "false" here to prevent particular change during redaction process
+                    return true;
+                }
+            }
+            
+            ...
+            
+            // Assign an instance before using Redactor
+            Redactor.RedactionCallback = new RedactionDump();
+            </code></example>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.IRedactionCallback.AcceptRedaction(GroupDocs.Redaction.Redactions.RedactionDescription)">
+      <summary>
+            This call is triggered right before applying any redaction to the document and allows to log or forbid it.
+            </summary>
+      <param name="description">Contains information about particular match type, criteria, text and position</param>
+      <returns>Return true to accept or false to decline particular match redaction</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.MetadataFilters">
+      <summary>
+            Represents a list of the most common types of document metadata.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.None">
+      <summary>
+            Empty filter setting, matches no metadata items.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.Author">
+      <summary>
+            Author of the document.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.Category">
+      <summary>
+            Category of the document.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.Comments">
+      <summary>
+            Comment for the document.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.Company">
+      <summary>
+            Company of the Author.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.ContentStatus">
+      <summary>
+            Content status.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.CreatedTime">
+      <summary>
+            Created time.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.HyperlinkBase">
+      <summary>
+            Hyperlink base.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.LastPrinted">
+      <summary>
+            Last printed date and time.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.LastSavedBy">
+      <summary>
+            Last saved by user.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.LastSavedTime">
+      <summary>
+            Last saved date and time.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.NameOfApplication">
+      <summary>
+            Name of application where the document was created.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.Manager">
+      <summary>
+            Author's manager name.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.RevisionNumber">
+      <summary>
+            Revision number.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.Subject">
+      <summary>
+            Subject of the document.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.Template">
+      <summary>
+            Document template name.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.Title">
+      <summary>
+            Document title.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.TotalEditingTime">
+      <summary>
+            Total editing time.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.Version">
+      <summary>
+            Document's version.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.Description">
+      <summary>
+            Document's description.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.Keywords">
+      <summary>
+            Document's keywords.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.ContentType">
+      <summary>
+            Content type.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.MetadataFilters.All">
+      <summary>
+            All types of the metadata items.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.MetadataRedaction">
+      <summary>
+            Represents a base abstract class for document metadata redactions.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.MetadataRedaction.Filter">
+      <summary>
+            Gets or sets the filter, which is used to select all or specific metadata, e.g. Author or Company.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.MetadataRedaction.#ctor(GroupDocs.Redaction.Redactions.MetadataFilters)">
+      <summary>
+            Initializes a new instance of MetadataRedaction class. This constructor requires <see cref="T:GroupDocs.Redaction.Redactions.MetadataFilters" /> as a parameter.
+            </summary>
+      <param name="filter">Flags enumeration <see cref="T:GroupDocs.Redaction.Redactions.MetadataFilters" /></param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.MetadataRedaction.ApplyFilter(GroupDocs.Redaction.Integration.MetadataCollection)">
+      <summary>
+            Applies the current Filter value to a given metadata dictionary.
+            </summary>
+      <param name="source">Collection of the document's metadata</param>
+      <returns>List of metadata items, conforming to the filter</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.MetadataRedaction.IsApplicableTo(GroupDocs.Redaction.Integration.MetadataItem)">
+      <summary>
+    Checks if this redaction could be applied to a given metadata item.
+    </summary>
+      <param name="item">Metadata item</param>
+      <returns>True if redaction can be applied</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.MetadataRedaction.ApplyTo(GroupDocs.Redaction.Integration.MetadataItem,GroupDocs.Redaction.Integration.IMetadataAccess)">
+      <summary>
+    Applies the redaction to a given metadata item.
+    </summary>
+      <param name="item">Metadata item</param>
+      <param name="metadata">Metadata access <see cref="T:GroupDocs.Redaction.Integration.DocumentFormatInstance" /></param>
+      <returns>Redaction result</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.MetadataRedaction.ApplyTo(GroupDocs.Redaction.Integration.DocumentFormatInstance)">
+      <summary>
+    Applies the redaction to a given format instance.
+    </summary>
+      <param name="formatInstance">An instance of a document to apply redaction</param>
+      <returns>Status of the redaction: success/failure and error message if any</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.MetadataSearchRedaction">
+      <summary>
+            Represents a metadata redaction that searches and redacts metadata using regular expressions, matching keys and/or values.
+            </summary>
+      <example>
+            The following example demonstrates how to search and redact certain text in specific metadata. 
+            <code lang="C#">
+            using (Redactor redactor = new Redactor(@"C:\sample.docx"))
+            {
+               MetadataSearchRedaction redaction = new MetadataSearchRedaction("Company Ltd.", "--company--");
+               // If not set, applies to all metadata items
+               redaction.Filter = MetadataFilters.Company;
+               redactor.Apply(redaction);
+               redactor.Save();
+            }
+            </code></example>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.MetadataSearchRedaction.ValueExpression">
+      <summary>
+            Gets the regular expression to match value text of a metadata item.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.MetadataSearchRedaction.Replacement">
+      <summary>
+            Gets the textual replacement value.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.MetadataSearchRedaction.KeyExpression">
+      <summary>
+            Gets the regular expression to match name (key) of metadata item.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.MetadataSearchRedaction.Description">
+      <summary>
+    Returns a string, describing the redaction and its parameters.
+    </summary>
+      <returns>Text, containing redaction name and parameters.</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.MetadataSearchRedaction.#ctor(System.String,System.String)">
+      <summary>
+            Initializes a new instance of MetadataSearchRedaction class, using value to match redacted items.
+            </summary>
+      <param name="valuePattern">Regular expression to search and replace</param>
+      <param name="replacement">Textual replacement</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.MetadataSearchRedaction.#ctor(System.String,System.String,System.String)">
+      <summary>
+            Initializes a new instance of MetadataSearchRedaction class, using item name and value to match redacted items.
+            </summary>
+      <param name="valuePattern">Regular expression to search and replace metadata item value</param>
+      <param name="replacement">Textual replacement</param>
+      <param name="keyPattern">Regular expression to search and replace metadata item name</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.MetadataSearchRedaction.#ctor(System.Text.RegularExpressions.Regex,System.String)">
+      <summary>
+            Initializes a new instance of MetadataSearchRedaction class, using value to match redacted items.
+            </summary>
+      <param name="valueRegex">Regular expression to search and replace</param>
+      <param name="replacement">Textual replacement</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.MetadataSearchRedaction.#ctor(System.Text.RegularExpressions.Regex,System.String,System.Text.RegularExpressions.Regex)">
+      <summary>
+            Initializes a new instance of MetadataSearchRedaction class, using item name and value to match redacted items.
+            </summary>
+      <param name="valueRegex">Regular expression to search and replace metadata item value</param>
+      <param name="replacement">Textual replacement</param>
+      <param name="keyRegex">Regular expression to search and replace metadata item name</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.MetadataSearchRedaction.IsApplicableTo(GroupDocs.Redaction.Integration.MetadataItem)">
+      <summary>
+    Checks if this redaction could be applied to a given metadata item.
+    </summary>
+      <param name="item">Metadata item</param>
+      <returns>True if redaction can be applied</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.MetadataSearchRedaction.ApplyTo(GroupDocs.Redaction.Integration.MetadataItem,GroupDocs.Redaction.Integration.IMetadataAccess)">
+      <summary>
+    Applies the redaction to a given metadata item.
+    </summary>
+      <param name="item">Metadata item</param>
+      <param name="metadata">Metadata access <see cref="T:GroupDocs.Redaction.Integration.DocumentFormatInstance" /></param>
+      <returns>Redaction result</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.RedactionActionType">
+      <summary>
+            Represents actions that can be taken to perform redaction.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.RedactionActionType.Replacement">
+      <summary>
+            Redacted text was replaced with another or covered with a block.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.RedactionActionType.Cleanup">
+      <summary>
+            Data were removed, but an empty object remains in the document.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.RedactionActionType.Deletion">
+      <summary>
+            Data and related structures were removed from the document.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.RedactionDescription">
+      <summary>
+            Represents a single change action info that performed during redaction process.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.RedactionDescription.RedactionType">
+      <summary>
+            Gets the type of document's data - text, metadata or annotations.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.RedactionDescription.ActionType">
+      <summary>
+            Gets the redaction operation: replacement, cleanup or deletion.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.RedactionDescription.OriginalText">
+      <summary>
+            Gets the matched text, if any expression is provided.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.RedactionDescription.Replacement">
+      <summary>
+            Gets the replacement information, can be null. 
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.RedactionDescription.#ctor(GroupDocs.Redaction.Redactions.RedactionType,GroupDocs.Redaction.Redactions.RedactionActionType,System.String)">
+      <summary>
+            Initializes a new instance of RedactionDescription class without replacement information.
+            </summary>
+      <param name="redactionType">Type of data being redacted</param>
+      <param name="actionType">Action to be performed on these data</param>
+      <param name="originalText">Matched text, comment or annotation body</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.RedactionDescription.#ctor(GroupDocs.Redaction.Redactions.RedactionType,GroupDocs.Redaction.Redactions.RedactionActionType,System.String,GroupDocs.Redaction.Redactions.TextReplacement)">
+      <summary>
+            Initializes a new instance of RedactionDescription class with replacement information.
+            </summary>
+      <param name="redactionType">Type of data being redacted</param>
+      <param name="actionType">Action to be performed on these data</param>
+      <param name="originalText">Matched text, comment or annotation body</param>
+      <param name="replacement">Replacement text, matched text and its position within original string</param>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.RedactionType">
+      <summary>
+            Represents a type of document's data, affected by redaction.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.RedactionType.Text">
+      <summary>
+            The document's body text.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.RedactionType.Metadata">
+      <summary>
+            The document's metadata.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.RedactionType.Annotation">
+      <summary>
+            The annotations within document's text.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.RedactionType.ImageArea">
+      <summary>
+            The area within an image.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.RegexRedaction">
+      <summary>
+            Represents a text redaction that searches and replaces text in the document by matching provided regular expression.
+            </summary>
+      <example>
+        <para>The following example demonstrates replacing text using the regular expression.</para>
+        <code lang="C#">
+    using (Redactor redactor = new Redactor(@"C:\sample.pdf"))
+    {
+      // replace with text
+      redactor.Apply(new RegexRedaction("\\d{2}\\s*\\d{2}[^\\d]*\\d{6}", new ReplacementOptions("[removed]")));
+      // replace with blue solid rectangle
+      redactor.Apply(new RegexRedaction(@"^\d+[,\.]{1}\d+$", new ReplacementOptions(System.Drawing.Color.Blue)));
+      redactor.Save();
+    }
+    </code>
+      </example>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.RegexRedaction.RegularExpression">
+      <summary>
+            Gets the regular expression to match.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.RegexRedaction.Description">
+      <summary>
+    Returns a string, describing the redaction and its parameters.
+    </summary>
+      <returns>Text, containing redaction name and parameters.</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.RegexRedaction.#ctor(System.String,GroupDocs.Redaction.Redactions.ReplacementOptions)">
+      <summary>
+            Initializes a new instance of RegexRedaction class.
+            </summary>
+      <param name="pattern">Regular expression to search and replace</param>
+      <param name="options">Replacement options (textual, color)</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.RegexRedaction.#ctor(System.Text.RegularExpressions.Regex,GroupDocs.Redaction.Redactions.ReplacementOptions)">
+      <summary>
+            Initializes a new instance of RegexRedaction class.
+            </summary>
+      <param name="regex">Regular expression to search and replace</param>
+      <param name="options">Replacement options (textual, color)</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.RegexRedaction.ApplyTo(GroupDocs.Redaction.Integration.DocumentFormatInstance)">
+      <summary>
+    Applies the redaction to a given format instance.
+    </summary>
+      <param name="formatInstance">An instance of a document to apply redaction</param>
+      <returns>Status of the redaction: success/failure and error message if any</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.RegionReplacementOptions">
+      <summary>
+            Represents color and area parameters for image region replacement. See <see cref="T:GroupDocs.Redaction.Redactions.ImageAreaRedaction" />.
+            </summary>
+      <example>
+        <para>The following example demonstrates replacing an area within the image with a solid color rectangle.</para>
+        <code lang="C#">
+    using (Redactor redactor = new Redactor("D:\\test.jpg"))
+    {
+       System.Drawing.Point samplePoint = new System.Drawing.Point(516, 311);
+       System.Drawing.Size sampleSize = new System.Drawing.Size(170, 35);
+       RedactorChangeLog result = redactor.Apply(new ImageAreaRedaction(samplePoint,
+                     new RegionReplacementOptions(System.Drawing.Color.Blue, sampleSize)));
+       if (result.Status != RedactionStatus.Failed)
+       {
+          redactor.Save();
+       };
+    } 
+    </code>
+      </example>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.RegionReplacementOptions.FillColor">
+      <summary>
+            Gets or sets the color to fill the redacted area.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.RegionReplacementOptions.Size">
+      <summary>
+            Gets or sets the rectangle with and height.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.RegionReplacementOptions.#ctor(System.Drawing.Color,System.Drawing.Size)">
+      <summary>
+            Initializes a new instance of RegionReplacementOptions class.
+            </summary>
+      <param name="fillColor">Color to fill the area</param>
+      <param name="size">Filled area size</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.RegionReplacementOptions.#ctor(System.Drawing.Color,System.Drawing.Font,System.String)">
+      <summary>
+            Initializes a new instance of RegionReplacementOptions class which size matches given text.
+            </summary>
+      <param name="fillColor">Color to fill the area</param>
+      <param name="font">Expected text font</param>
+      <param name="expectedText">Expected text</param>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.ReplacementOptions">
+      <summary>
+            Represents options for matched text replacement.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.ReplacementOptions.ActionType">
+      <summary>
+            Gets the replacement action: draw box or replace text.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.ReplacementOptions.Replacement">
+      <summary>
+            Gets or sets the textual replacement value.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.ReplacementOptions.BoxColor">
+      <summary>
+            Gets or sets the color for a <see cref="F:GroupDocs.Redaction.Redactions.ReplacementType.DrawBox" /> option (ignored otherwise).
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.ReplacementOptions.#ctor(System.String)">
+      <summary>
+            Initializes a new instance of ReplacementOptions class with replacement text as an option.
+            </summary>
+      <param name="replacement">Textual replacement</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.ReplacementOptions.#ctor(System.Drawing.Color)">
+      <summary>
+            Initializes a new instance of ReplacementOptions class with colored rectangle as an option.
+            </summary>
+      <param name="color">Rectangle color</param>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.ReplacementType">
+      <summary>
+            Represents a type of replacement for the matched text. 
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.ReplacementType.ReplaceString">
+      <summary>
+            Replaces matched text with another string, e.g. exemption code.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Redactions.ReplacementType.DrawBox">
+      <summary>
+            Draws a rectangle of specific color (Black by default) instead of redacted text.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.TextRedaction">
+      <summary>
+            Represents a base abstract class for document text redactions.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.TextRedaction.ActionOptions">
+      <summary>
+            Gets the <see cref="T:GroupDocs.Redaction.Redactions.ReplacementOptions" /> instance, specifying type of text replacement.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.TextRedaction.#ctor(GroupDocs.Redaction.Redactions.ReplacementOptions)">
+      <summary>
+            Initializes a new instance of TextRedaction class. This constructor requires <see cref="T:GroupDocs.Redaction.Redactions.ReplacementOptions" /> as a parameter.
+            </summary>
+      <param name="actionOptions">Text replacement options (exemption code or box color)</param>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactions.TextReplacement">
+      <summary>
+            Represents a textual replacement information.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.TextReplacement.Index">
+      <summary>
+            Gets an index of the matched text within source string.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.TextReplacement.OriginalText">
+      <summary>
+            Gets the original matched string. 
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactions.TextReplacement.Replacement">
+      <summary>
+            Gets the string, replacing OriginalText.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactions.TextReplacement.#ctor(System.Int32,System.String,System.String)">
+      <summary>
+            Initializes a new instance of TextReplacement class.
+            </summary>
+      <param name="index">Index of a matched text within source string</param>
+      <param name="original">Original matched string</param>
+      <param name="replacement">String, replacing OriginalText in source string</param>
+    </member>
+    <member name="T:GroupDocs.Redaction.Options.NamespaceDoc">
+      <summary>
+            The <see cref="N:GroupDocs.Redaction.Options" /> namespace provides load and save options classes.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Redaction.Options.CreatePageStream">
+      <summary>
+            Represents method that returns a stream to write page preview data. 
+            </summary>
+      <param name="pageNumber">Page number of a page to generate thumbnail</param>
+      <returns>Stream to write page preview</returns>
+      <example>
+        <para>The following example demonstrates how get a document preview using <see cref="T:GroupDocs.Redaction.Options.PreviewOptions" /> and <see cref="T:GroupDocs.Redaction.Options.CreatePageStream" /> delegate.</para>
+        <code lang="C#">
+    CreatePageStream createDelegate = delegate (int pageNumber)
+    {
+        var pagePath = System.IO.Path.Combine(@"C:\Temp", string.Format("page_{0}.png", pageNumber));
+        return System.IO.File.Create(pagePath);
+    };
+    var previewOptions = new PreviewOptions(createDelegate);
+    previewOptions.PreviewFormat = PreviewOptions.PreviewFormats.PNG;
+    previewOptions.Height = 640;
+    previewOptions.Width = 480;
+    previewOptions.PageNumbers = new int[] { 1 };
+    using (var redactor = new Redactor("C:\Temp\SourceFile.pdf"))
+    {
+        redactor.GeneratePreview(previewOptions);
+    }
+    </code>
+      </example>
+    </member>
+    <member name="T:GroupDocs.Redaction.Options.ILogger">
+      <summary>
+            Defines interface of a logger that can be used for logging events and errors in process of redaction. 
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Options.ILogger.Error(System.String)">
+      <summary>
+            Logs an error that occurred during redaction process.
+            </summary>
+      <param name="message"> The error message.</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Options.ILogger.Trace(System.String)">
+      <summary>
+            Logs an event that occurred during redaction process.
+            </summary>
+      <param name="message"> The event message.</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Options.ILogger.Warning(System.String)">
+      <summary>
+            Logs a warning that occurred during redaction process.
+            </summary>
+      <param name="message"> The warning message.</param>
+    </member>
+    <member name="T:GroupDocs.Redaction.Options.LoadOptions">
+      <summary>
+            Provides options that will be used to open a file.
+            </summary>
+      <example>
+            The following example demonstrates how to open password-protected document.
+            <code lang="C#">
+            LoadOptions loadOptions = new LoadOptions("mysecretpassword");
+            using (var redactor = new Redactor("PasswordProtected.pdf", loadOptions))
+            {
+                // work with document
+            }
+            </code></example>
+    </member>
+    <member name="P:GroupDocs.Redaction.Options.LoadOptions.Password">
+      <summary>
+            Gets or sets a password for password-protected documents.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Options.LoadOptions.#ctor">
+      <summary>
+            Initializes a new instance of LoadOptions class. 
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Options.LoadOptions.#ctor(System.String)">
+      <summary>
+            Initializes a new instance of LoadOptions class with specified password.
+            </summary>
+      <param name="password">Password for protected files</param>
+    </member>
+    <member name="T:GroupDocs.Redaction.Options.PdfComplianceLevel">
+      <summary>
+            Represents a list of supported PDF compliance levels.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Options.PdfComplianceLevel.Auto">
+      <summary>
+            The output file will comply with the PDF/A-1b standard by default.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Options.PdfComplianceLevel.PdfA1a">
+      <summary>
+            The output file will comply with the PDF/A-1a standard.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Redaction.Options.PreviewOptions">
+      <summary>
+            Provides options to sets requirements and stream delegates for preview generation.
+            </summary>
+      <example>
+        <para>The following example demonstrates how get a document preview using <see cref="T:GroupDocs.Redaction.Options.PreviewOptions" /> and <see cref="P:GroupDocs.Redaction.Options.PreviewOptions.CreatePageStream" /> delegate.</para>
+        <code lang="C#">
+    CreatePageStream createDelegate = delegate (int pageNumber)
+    {
+        var pagePath = System.IO.Path.Combine(@"C:\Temp", string.Format("page_{0}.png", pageNumber));
+        return System.IO.File.Create(pagePath);
+    };
+    var previewOptions = new PreviewOptions(createDelegate);
+    previewOptions.PreviewFormat = PreviewOptions.PreviewFormats.PNG;
+    previewOptions.Height = 640;
+    previewOptions.Width = 480;
+    previewOptions.PageNumbers = new int[] { 1 };
+    using (var redactor = new Redactor("C:\Temp\SourceFile.pdf"))
+    {
+        redactor.GeneratePreview(previewOptions);
+    }
+    </code>
+        <para>The following example demonstrates how get a document preview using <see cref="T:GroupDocs.Redaction.Options.PreviewOptions" /> and both delegates.</para>
+        <code lang="C#">
+    CreatePageStream createDelegate = delegate (int pageNumber)
+    {
+        var pagePath = System.IO.Path.Combine(@"C:\Temp", string.Format("page_{0}.png", pageNumber));
+        return System.IO.File.Create(pagePath);
+    };
+    ReleasePageStream releaseDelegate = delegate (int pageNumber, System.IO.Stream pageStream)
+    {
+        // do anything with Stream, containing page preview
+        pageStream.Close();
+    };
+    var previewOptions = new PreviewOptions(createDelegate, releaseDelegate);
+    previewOptions.PreviewFormat = PreviewOptions.PreviewFormats.PNG;
+    previewOptions.Height = 640;
+    previewOptions.Width = 480;
+    previewOptions.PageNumbers = new int[] { 1 };
+    using (var redactor = new Redactor("C:\Temp\SourceFile.pdf"))
+    {
+        redactor.GeneratePreview(previewOptions);
+    }
+    </code>
+      </example>
+    </member>
+    <member name="P:GroupDocs.Redaction.Options.PreviewOptions.Width">
+      <summary>
+            Gets or sets page preview width.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Options.PreviewOptions.Height">
+      <summary>
+            Gets or sets page preview height.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Options.PreviewOptions.PageNumbers">
+      <summary>
+            Gets or sets an array of page numbers to generate preview.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Options.PreviewOptions.PreviewFormat">
+      <summary>
+            Gets or sets preview image format. 
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Options.PreviewOptions.CreatePageStream">
+      <summary>
+            Gets or sets an instance of page stream creation delegate.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Options.PreviewOptions.ReleasePageStream">
+      <summary>
+            Gets or sets an instance of page preview completion delegate.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Options.PreviewOptions.#ctor(GroupDocs.Redaction.Options.CreatePageStream)">
+      <summary>
+            Initializes a new instance of PreviewOptions class, causing the output stream to be closed.
+            </summary>
+      <param name="createPageStream">Creates a stream for a specific page preview</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Options.PreviewOptions.#ctor(GroupDocs.Redaction.Options.CreatePageStream,GroupDocs.Redaction.Options.ReleasePageStream)">
+      <summary>
+            Initializes a new instance of PreviewOptions class, causing the output stream to be returned to the client for further use.
+            </summary>
+      <param name="createPageStream">Creates a stream for a specific page preview</param>
+      <param name="releasePageStream">Notifies that the page preview generation is done and gets output stream</param>
+    </member>
+    <member name="T:GroupDocs.Redaction.Options.PreviewOptions.PreviewFormats">
+      <summary>
+            Represents supported preview formats. 
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Options.PreviewOptions.PreviewFormats.PNG">
+      <summary>
+            Portable Network Graphics Format.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Options.PreviewOptions.PreviewFormats.JPEG">
+      <summary>
+            Joint Photographic Experts Group Format.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.Options.PreviewOptions.PreviewFormats.BMP">
+      <summary>
+            Bitmap Picture Format.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Redaction.Options.RasterizationOptions">
+      <summary>
+            Provides options for converting files into PDF.
+            </summary>
+      <example>
+        <para>The following example demonstrates how to set options for the rasterization process.</para>
+        <code lang="C#">
+    using (var redactor = new Redactor("SomePresentation.pptx"))
+    {
+        // redact sensitive data on the first slide 
+    
+        var rasterizationOptions = new RasterizationOptions();
+        rasterizationOptions.PageIndex = 0;
+        rasterizationOptions.PageCount = 1;
+        rasterizationOptions.Compliance = PdfComplianceLevel.PdfA1a;
+        using (var stream = File.Open(Path.Combine(@"C:\Temp", "PresentationFirstSlide.pdf")))
+        {
+            redactor.Save(stream, rasterizationOptions);
+        }
+    }      
+    </code>
+      </example>
+    </member>
+    <member name="P:GroupDocs.Redaction.Options.RasterizationOptions.Enabled">
+      <summary>
+            Gets or sets a value indicating whether all pages in the document need to be converted to images and put in a single PDF file. TRUE by default, set to FALSE in order to avoid rasterization. 
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Options.RasterizationOptions.PageIndex">
+      <summary>
+            Gets or sets the index of the first page (0-based) to convert into PDF.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Options.RasterizationOptions.PageCount">
+      <summary>
+            Gets or sets the number of pages to be converted into PDF.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Options.RasterizationOptions.Compliance">
+      <summary>
+            Gets or sets the PDF Compliance level.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Options.RasterizationOptions.#ctor">
+      <summary>
+    Initializes a new instance.
+    </summary>
+    </member>
+    <member name="T:GroupDocs.Redaction.Options.RedactorSettings">
+      <summary>
+            Represents redaction settings, allowing to customize the redaction process. 
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Options.RedactorSettings.Logger">
+      <summary>
+            Gets or sets an instance of a class, implementing <see cref="T:GroupDocs.Redaction.Options.ILogger" />, that is used for logging events and errors. 
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Options.RedactorSettings.RedactionCallback">
+      <summary>
+            Gets or sets an instance of a class, implementing <see cref="T:GroupDocs.Redaction.Redactions.IRedactionCallback" />. Please, note that setting this property affects all instances of Redactor class, as if it was static.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Options.RedactorSettings.#ctor">
+      <summary>
+            Initializes a new instance of the RedactorSettings class.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Options.RedactorSettings.#ctor(GroupDocs.Redaction.Options.ILogger)">
+      <summary>
+            Initializes a new instance of the RedactorSettings class with a given ILogger instance.
+            </summary>
+      <param name="logger">An instance of a class, implementing ILogger interface</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Options.RedactorSettings.#ctor(GroupDocs.Redaction.Redactions.IRedactionCallback)">
+      <summary>
+            Initializes a new instance of the RedactorSettings class with a given IRedactionCallback instance.
+            </summary>
+      <param name="callback">An instance of a class, implementing IRedactionCallbck interface</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Options.RedactorSettings.#ctor(GroupDocs.Redaction.Options.ILogger,GroupDocs.Redaction.Redactions.IRedactionCallback)">
+      <summary>
+            Initializes a new instance of the RedactorSettings class with given ILogger and IRedactionCallback instances.
+            </summary>
+      <param name="logger">An instance of a class, implementing ILogger interface</param>
+      <param name="callback">An instance of a class, implementing IRedactionCallbck interface</param>
+    </member>
+    <member name="T:GroupDocs.Redaction.Options.ReleasePageStream">
+      <summary>
+            Represents a method which releases stream created by <see cref="T:GroupDocs.Redaction.Options.CreatePageStream" /> delegate. 
+            </summary>
+      <param name="pageNumber">Page number of the generated page preview</param>
+      <param name="pageStream">Stream, containing the generated page preview</param>
+      <example>
+        <para>The following example demonstrates how get a document preview using <see cref="T:GroupDocs.Redaction.Options.PreviewOptions" /> and both delegates.</para>
+        <code lang="C#">
+    CreatePageStream createDelegate = delegate (int pageNumber)
+    {
+        var pagePath = System.IO.Path.Combine(@"C:\Temp", string.Format("page_{0}.png", pageNumber));
+        return System.IO.File.Create(pagePath);
+    };
+    ReleasePageStream releaseDelegate = delegate (int pageNumber, System.IO.Stream pageStream)
+    {
+        // do anything with Stream, containing page preview
+        pageStream.Close();
+    };
+    var previewOptions = new PreviewOptions(createDelegate, releaseDelegate);
+    previewOptions.PreviewFormat = PreviewOptions.PreviewFormats.PNG;
+    previewOptions.Height = 640;
+    previewOptions.Width = 480;
+    previewOptions.PageNumbers = new int[] { 1 };
+    using (var redactor = new Redactor("C:\Temp\SourceFile.pdf"))
+    {
+        redactor.GeneratePreview(previewOptions);
+    }
+    </code>
+      </example>
+    </member>
+    <member name="T:GroupDocs.Redaction.Options.SaveOptions">
+      <summary>
+            Provides options for changing an output file name and/or converting the document to image-based PDF (rasterization).
+            </summary>
+      <example>
+        <para>The following example demonstrates how to save a document using SaveOptions.</para>
+        <code lang="C#">
+    using (Redactor redactor = new Redactor(@"C:\sample.pdf"))
+    {
+       // Document redaction goes here
+       // ...
+    
+       // Save the document with default options (convert pages into images, save as PDF)
+       redactor.Save();
+    
+       // Save the document in original format overwriting original file
+       redactor.Save(new SaveOptions() { AddSuffix = false, RasterizeToPDF = false });
+    
+       // Save the document to "*_Redacted.*" file in original format
+       redactor.Save(new SaveOptions() { AddSuffix = true, RasterizeToPDF = false });
+    
+       // Save the document to "*_AnyText.*" (e.g. timestamp instead of "AnyText") in its file name without rasterization
+       redactor.Save(new SaveOptions(false, "AnyText"));
+    }    
+    </code>
+      </example>
+    </member>
+    <member name="F:GroupDocs.Redaction.Options.SaveOptions.SaveSuffix">
+      <summary>
+            Represents default suffix value, which is "Redacted".
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Options.SaveOptions.AddSuffix">
+      <summary>
+            Gets or sets a value indicating whether the file name needs to be changed before saving. False by default.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Options.SaveOptions.RedactedFileSuffix">
+      <summary>
+            Gets or sets a custom suffix for output file name. If it is not specified, the <see cref="F:GroupDocs.Redaction.Options.SaveOptions.SaveSuffix" /> constant will be used.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Options.SaveOptions.RasterizeToPDF">
+      <summary>
+            Gets or sets a value indicating whether all pages in the document need to be converted to images and put in a single PDF file.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Options.SaveOptions.Rasterization">
+      <summary>
+            Gets the rasterization settings.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Options.SaveOptions.#ctor">
+      <summary>
+            Initializes a new instance with defaults: rasterize to PDF - false, add suffix - false.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Options.SaveOptions.#ctor(System.Boolean,System.String)">
+      <summary>
+            Initializes a new instance with given parameters.
+            </summary>
+      <param name="rasterizeToPdf">True, if all pages in the document need to be converted to images and put in a single PDF file</param>
+      <param name="suffix">This text will be added to the end of file name, if not empty also sets AddSuffix to true</param>
+    </member>
+    <member name="T:GroupDocs.Redaction.PageInfo">
+      <summary>
+            Represents a brief page information.
+            </summary>
+      <example>
+        <para>The following example demonstrates how to retrieve the general document information using <see cref="T:GroupDocs.Redaction.IDocumentInfo" />.</para>
+        <code lang="C#">
+    try
+    {
+        using (Redactor red = new Redactor(@"C:\Temp\testfile.doc"))
+        {
+            IDocumentInfo docInfo = red.GetDocumentInfo();
+            Console.WriteLine("Document size: {0}", docInfo.Size);
+            Console.WriteLine("Document format: {0}", docInfo.FileType.FileFormat);
+            Console.WriteLine("Document contains {0} pages", docInfo.PageCount);
+            foreach (PageInfo page in docInfo.Pages)
+            {
+                Console.WriteLine("Page {0} size is {1}x{2}", page.PageNumber, page.Width, page.Height);
+            }
+        }
+    }
+    catch (GroupDocs.Redaction.Exceptions.PasswordRequiredException)
+    {
+        Console.WriteLine("You are trying to access document which is password protected. Please, set the password.");
+    }
+    catch (GroupDocs.Redaction.Exceptions.IncorrectPasswordException)
+    {
+        Console.WriteLine("The provided password is not valid.");
+    }
+    </code>
+      </example>
+    </member>
+    <member name="P:GroupDocs.Redaction.PageInfo.Width">
+      <summary>
+            Gets or sets the page width.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.PageInfo.Height">
+      <summary>
+            Gets or sets the page height.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.PageInfo.PageNumber">
+      <summary>
+            Gets or sets the page number.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redaction">
+      <summary>
+            Represents a base abstract class for all redaction types.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redaction.Description">
+      <summary>
+    Returns a string, describing the redaction and its parameters.
+    </summary>
+      <returns>Text, containing redaction name and parameters.</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redaction.ApplyTo(GroupDocs.Redaction.Integration.DocumentFormatInstance)">
+      <summary>
+    Applies the redaction to a given format instance.
+    </summary>
+      <param name="formatInstance">An instance of a document to apply redaction</param>
+      <returns>Status of the redaction: success/failure and error message if any</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.RedactionPolicy">
+      <summary>
+            Represents a sanitization policy, containing a set of specific redactions to apply.
+            </summary>
+      <example>
+        <para>The following example demonstrates how to apply a redaction policy to all files within a given inbound folder, and save to one of outbound folders - for successfully updated files and for failed ones.</para>
+        <code lang="C#">
+     RedactionPolicy policy = RedactionPolicy.Load("RedactionPolicy.xml");
+     foreach (var fileEntry in Directory.GetFileNames("C:\\Inbound")) 
+     {
+          using (Redactor redactor = new Redactor(Path.Combine("C:\\Inbound\\", fileEntry)))
+          {
+         	     RedactorChangeLog result = redactor.Apply(policy);
+         	     String resultFolder = result.Status != RedactionStatus.Failed ? "C:\\Outbound\\Done\\" : "C:\\Outbound\\Failed\\";
+         	     using (Stream fileStream = File.Open(Path.Combine(resultFolder, fileEntry), FileMode.Open, FileAccess.ReadWrite))
+        	     {
+                    redactor.Save(fileStream, new RasterizationOptions() { Enabled = false });
+        	     }        
+          }
+     }   
+     </code>
+        <para>The following example contains a sample XML policy file with sample configurations for all types of redactions.</para>
+        <code lang="XML">
+     &lt;?xml version="1.0" encoding="utf-8"?&gt;  
+     &lt;redactionPolicy xmlns = "http://www.groupdocs.com/redaction" &gt;
+       &lt;regexRedaction regularExpression="(dolor)" actionType="ReplaceString" replacement="foobar" /&gt;  
+       &lt;exactPhraseRedaction searchPhrase = "dolor" caseSensitive="true" actionType="DrawBox" color="Red" /&gt;   
+       
+       &lt;cellColumnRedaction regularExpression = "(foo)bar1" replacement="[red1]" columnIndex="1" worksheetIndex="2" /&gt; 
+       &lt;cellColumnRedaction regularExpression = "(foo)bar2" replacement="[red2]" wokrsheetName="Sample" /&gt; 
+       
+       &lt;eraseMetadataRedaction filter = "All" /&gt;
+       &lt;metadataSearchRedaction filter="Title, Author" replacement="foobar" valueExpression="(metasearch)" keyExpression="" /&gt;  
+       
+      &lt;annotationRedaction regularExpression = "(anno1)" replacement="foobar" /&gt;  
+      &lt;deleteAnnotationRedaction regularExpression = "(anno2)" /&gt;
+    
+      &lt;imageAreaRedaction pointX="15" pointY="17" width="200" height="10" color="#AA50FC"  /&gt;  
+      &lt;imageAreaRedaction pointX = "110" pointY="120" width="60" height="20" color="Magenta"  /&gt;  
+     &lt;/redactionPolicy&gt;
+    </code>
+      </example>
+    </member>
+    <member name="P:GroupDocs.Redaction.RedactionPolicy.Redactions">
+      <summary>
+            Gets an array of fully configured <see cref="T:GroupDocs.Redaction.Redaction" />-derived classes.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.RedactionPolicy.#ctor">
+      <summary>
+            Creates a new instance of Redaction policy.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.RedactionPolicy.Load(System.String)">
+      <summary>
+            Loads an instance of <see cref="T:GroupDocs.Redaction.RedactionPolicy" /> from a file path.
+            </summary>
+      <param name="filePath">Path to XML file</param>
+      <returns>Redaction policy</returns>
+      <example>
+        <para>The following example demonstrates how to apply a redaction policy to all files within a given inbound folder, and save to one of outbound folders - for successfully updated files and for failed ones.</para>
+        <code lang="C#">
+     RedactionPolicy policy = RedactionPolicy.Load("RedactionPolicy.xml");
+     foreach (var fileEntry in Directory.GetFileNames("C:\\Inbound")) 
+     {
+          using (Redactor redactor = new Redactor(Path.Combine("C:\\Inbound\\", fileEntry)))
+          {
+         	     RedactorChangeLog result = redactor.Apply(policy);
+         	     String resultFolder = result.Status != RedactionStatus.Failed ? "C:\\Outbound\\Done\\" : "C:\\Outbound\\Failed\\";
+         	     using (Stream fileStream = File.Open(Path.Combine(resultFolder, fileEntry), FileMode.Open, FileAccess.ReadWrite))
+        	     {
+                    redactor.Save(fileStream, new RasterizationOptions() { Enabled = false });
+        	     }        
+          }
+     }   
+     </code>
+        <para>The following example contains a sample XML policy file with sample configurations for all types of redactions.</para>
+        <code lang="XML">
+     &lt;?xml version="1.0" encoding="utf-8"?&gt;  
+     &lt;redactionPolicy xmlns = "http://www.groupdocs.com/redaction" &gt;
+       &lt;regexRedaction regularExpression="(dolor)" actionType="ReplaceString" replacement="foobar" /&gt;  
+       &lt;exactPhraseRedaction searchPhrase = "dolor" caseSensitive="true" actionType="DrawBox" color="Red" /&gt;   
+       
+       &lt;cellColumnRedaction regularExpression = "(foo)bar1" replacement="[red1]" columnIndex="1" worksheetIndex="2" /&gt; 
+       &lt;cellColumnRedaction regularExpression = "(foo)bar2" replacement="[red2]" wokrsheetName="Sample" /&gt; 
+       
+       &lt;eraseMetadataRedaction filter = "All" /&gt;
+       &lt;metadataSearchRedaction filter="Title, Author" replacement="foobar" valueExpression="(metasearch)" keyExpression="" /&gt;  
+       
+      &lt;annotationRedaction regularExpression = "(anno1)" replacement="foobar" /&gt;  
+      &lt;deleteAnnotationRedaction regularExpression = "(anno2)" /&gt;
+    
+      &lt;imageAreaRedaction pointX="15" pointY="17" width="200" height="10" color="#AA50FC"  /&gt;  
+      &lt;imageAreaRedaction pointX = "110" pointY="120" width="60" height="20" color="Magenta"  /&gt;  
+     &lt;/redactionPolicy&gt;
+    </code>
+      </example>
+    </member>
+    <member name="M:GroupDocs.Redaction.RedactionPolicy.Load(System.IO.Stream)">
+      <summary>
+            Loads an instance of <see cref="T:GroupDocs.Redaction.RedactionPolicy" /> from a stream.
+            </summary>
+      <param name="input">Stream containing XML configuration</param>
+      <returns>Redaction policy</returns>
+      <example>
+        <para>The following example demonstrates how to apply a redaction policy to all files within a given inbound folder, and save to one of outbound folders - for successfully updated files and for failed ones.</para>
+        <code lang="C#">
+     RedactionPolicy policy = RedactionPolicy.Load("RedactionPolicy.xml");
+     foreach (var fileEntry in Directory.GetFileNames("C:\\Inbound")) 
+     {
+          using (Redactor redactor = new Redactor(Path.Combine("C:\\Inbound\\", fileEntry)))
+          {
+         	     RedactorChangeLog result = redactor.Apply(policy);
+         	     String resultFolder = result.Status != RedactionStatus.Failed ? "C:\\Outbound\\Done\\" : "C:\\Outbound\\Failed\\";
+         	     using (Stream fileStream = File.Open(Path.Combine(resultFolder, fileEntry), FileMode.Open, FileAccess.ReadWrite))
+        	     {
+                    redactor.Save(fileStream, new RasterizationOptions() { Enabled = false });
+        	     }        
+          }
+     }   
+     </code>
+        <para>The following example contains a sample XML policy file with sample configurations for all types of redactions.</para>
+        <code lang="XML">
+     &lt;?xml version="1.0" encoding="utf-8"?&gt;  
+     &lt;redactionPolicy xmlns = "http://www.groupdocs.com/redaction" &gt;
+       &lt;regexRedaction regularExpression="(dolor)" actionType="ReplaceString" replacement="foobar" /&gt;  
+       &lt;exactPhraseRedaction searchPhrase = "dolor" caseSensitive="true" actionType="DrawBox" color="Red" /&gt;   
+       
+       &lt;cellColumnRedaction regularExpression = "(foo)bar1" replacement="[red1]" columnIndex="1" worksheetIndex="2" /&gt; 
+       &lt;cellColumnRedaction regularExpression = "(foo)bar2" replacement="[red2]" wokrsheetName="Sample" /&gt; 
+       
+       &lt;eraseMetadataRedaction filter = "All" /&gt;
+       &lt;metadataSearchRedaction filter="Title, Author" replacement="foobar" valueExpression="(metasearch)" keyExpression="" /&gt;  
+       
+      &lt;annotationRedaction regularExpression = "(anno1)" replacement="foobar" /&gt;  
+      &lt;deleteAnnotationRedaction regularExpression = "(anno2)" /&gt;
+    
+      &lt;imageAreaRedaction pointX="15" pointY="17" width="200" height="10" color="#AA50FC"  /&gt;  
+      &lt;imageAreaRedaction pointX = "110" pointY="120" width="60" height="20" color="Magenta"  /&gt;  
+     &lt;/redactionPolicy&gt;
+    </code>
+      </example>
+    </member>
+    <member name="T:GroupDocs.Redaction.RedactionResult">
+      <summary>
+            Represents a result of the redaction operation.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.RedactionResult.Status">
+      <summary>
+            Gets the execution status.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.RedactionResult.ErrorMessage">
+      <summary>
+            Gets the error message for diagnostics.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.RedactionResult.Skipped(System.String)">
+      <summary>
+            Initializes a new instance of RedactionResult class with Skipped status.
+            </summary>
+      <param name="description">Reason why the operation was skipped</param>
+      <returns>Sskipped redaction result</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.RedactionResult.Partial(System.String)">
+      <summary>
+            Initializes a new instance of RedactionResult class with PartiallyApplied status.
+            </summary>
+      <param name="description">Reason why the operation was not fully applied</param>
+      <returns>Partially applied redaction result</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.RedactionResult.Failed(System.String)">
+      <summary>
+            Initializes a new instance of RedactionResult class with Failed status.
+            </summary>
+      <param name="description">Failure or exception details</param>
+      <returns>Failed redaction result</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.RedactionResult.Successful">
+      <summary>
+            Initializes a new instance of RedactionResult class with Applied (successful) status.
+            </summary>
+      <returns>Successful redaction result</returns>
+    </member>
+    <member name="T:GroupDocs.Redaction.RedactionStatus">
+      <summary>
+            Represents a redaction completion status.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.RedactionStatus.Applied">
+      <summary>
+            Redaction was fully and successfully applied.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.RedactionStatus.PartiallyApplied">
+      <summary>
+            Redaction was aplied only to a part of its matches.
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.RedactionStatus.Skipped">
+      <summary>
+            Redaction was skipped (not applied).
+            </summary>
+    </member>
+    <member name="F:GroupDocs.Redaction.RedactionStatus.Failed">
+      <summary>
+            Redaction failed with exception.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Redaction.Redactor">
+      <summary>
+            Represents a main class that controls document redaction process, allowing to open, redact and save documents.
+            </summary>
+      <example>
+        <para>The following example demonstrates applying a single redaction to the document.</para>
+        <code lang="C#">
+     using (Redactor redactor = new Redactor(@"D:\\test.docx"))
+     {
+        RedactorChangeLog result = redactor.Apply(new RegexRedaction(LookupStrings.SSNRegexPattern, new ReplacementOptions("[ssn]")));
+        if (result.Status != RedactionStatus.Failed)
+        {
+           redactor.Save();
+        };
+     }
+     </code>
+        <para>The following example demonstrates applying a list of redactions to the document.</para>
+        <code lang="C#">
+     using (Redactor redactor = new Redactor(@"D:\\test.docx"))
+     {
+        var redactionList = new Redaction[] 
+        {
+           new ExactPhraseRedaction(LookupStrings.ClientName, new ReplacementOptions("[client]")),
+           new ExactPhraseRedaction(LookupStrings.ClientAddress, new ReplacementOptions(System.Drawing.Color.Red)),
+           new RegexRedaction(LookupStrings.SSNRegexPattern, new ReplacementOptions("[ssn]")),
+           new RegexRedaction(LookupStrings.BankCardRegexPattern, new ReplacementOptions(System.Drawing.Color.Blue)),
+           // ... other redactions
+           new DeleteAnnotationRedaction("(?im:(use|show|describe))"),
+           new EraseMetadataRedaction(MetadataFilter.Author),
+           new MetadataSearchRedaction(LookupStrings.CompanyName, "--company--") 
+        }; 
+        RedactorChangeLog result = redactor.Apply(redactionList);
+        // false, if at least one redaction failed
+        if (result.Status != RedactionStatus.Failed)
+        {
+           redactor.Save();
+        };
+     }
+     </code>
+        <para>The following example demonstrates how to apply a redaction policy to all files within a given inbound folder, and save to one of outbound folders - for successfully updated files and for failed ones.</para>
+        <code lang="C#">
+     RedactionPolicy policy = RedactionPolicy.Load("RedactionPolicy.xml");
+     foreach (var fileEntry in Directory.GetFileNames("C:\\Inbound")) 
+     {
+          using (Redactor redactor = new Redactor(Path.Combine("C:\\Inbound\\", fileEntry)))
+          {
+         	     RedactorChangeLog result = redactor.Apply(policy);
+         	     String resultFolder = result.Status != RedactionStatus.Failed ? "C:\\Outbound\\Done\\" : "C:\\Outbound\\Failed\\";
+         	     using (Stream fileStream = File.Open(Path.Combine(resultFolder, fileEntry), FileMode.Open, FileAccess.ReadWrite))
+        	     {
+                    redactor.Save(fileStream, new RasterizationOptions() { Enabled = false });
+        	     }        
+          }
+     }   
+     </code>
+        <para>The following example demonstrates how to open a password-protected documents using LoadOptions.</para>
+        <code lang="C#">
+     LoadOptions loadOptions = new LoadOptions("mypassword");
+     using (Redactor redactor = new Redactor(@"C:\sample.pdf", loadOptions))
+     {
+         // Here we can use document instance to perform redactions
+     }
+     </code>
+        <para>The following example demonstrates how to save a document using SaveOptions.</para>
+        <code lang="C#">
+    using (Redactor redactor = new Redactor(@"C:\sample.pdf"))
+    {
+       // Document redaction goes here
+       // ...
+    
+       // Save the document with default options (convert pages into images, save as PDF)
+       redactor.Save();
+    
+       // Save the document in original format overwriting original file
+       redactor.Save(new SaveOptions() { AddSuffix = false, RasterizeToPDF = false });
+    
+       // Save the document to "*_Redacted.*" file in original format
+       redactor.Save(new SaveOptions() { AddSuffix = true, RasterizeToPDF = false });
+    
+       // Save the document to "*_AnyText.*" (e.g. timestamp instead of "AnyText") in its file name without rasterization
+       redactor.Save(new SaveOptions(false, "AnyText"));
+    }    
+    </code>
+      </example>
+    </member>
+    <member name="P:GroupDocs.Redaction.Redactor.RedactionCallback">
+      <summary>
+            Gets or sets an instance of a class, implementing <see cref="T:GroupDocs.Redaction.Redactions.IRedactionCallback" />. 
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactor.#ctor(System.String)">
+      <summary>
+            Initializes a new instance of <see cref="T:GroupDocs.Redaction.Redactor" /> class using file path.
+            </summary>
+      <param name="filePath">Path to the file</param>
+      <example>
+            The following example demonstrates how to open a document for redaction.
+            <code lang="C#">
+            using (Redactor redactor = new Redactor(@"C:\sample.pdf"))
+            {
+                // Here we can use document instance to perform redactions
+            }
+            </code></example>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactor.#ctor(System.IO.Stream)">
+      <summary>
+            Initializes a new instance of <see cref="T:GroupDocs.Redaction.Redactor" /> class using stream.
+            </summary>
+      <param name="document">Source stream of the document</param>
+      <example>
+            The following example demonstrates how to open a document from stream.
+            <code lang="C#">
+            using (Stream stream = File.Open(@"C:\\sample.pdf", FileMode.Open, FileAccess.ReadWrite))
+            {
+                using (Redactor redactor = new Redactor(stream))
+                {
+                    // Here we can use document instance to perform redactions
+                }
+            }
+            </code></example>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactor.#ctor(System.String,GroupDocs.Redaction.Options.LoadOptions)">
+      <summary>
+            Initializes a new instance of <see cref="T:GroupDocs.Redaction.Redactor" /> class for a password-protected document using its path.
+            </summary>
+      <param name="filePath">Path to file.</param>
+      <param name="loadOptions">Options, including password.</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactor.#ctor(System.String,GroupDocs.Redaction.Options.LoadOptions,GroupDocs.Redaction.Options.RedactorSettings)">
+      <summary>
+            Initializes a new instance of <see cref="T:GroupDocs.Redaction.Redactor" /> class for a password-protected document using its path and settings.
+            </summary>
+      <param name="filePath">Path to file.</param>
+      <param name="loadOptions">File-dependent options, including password.</param>
+      <param name="settings">Default settings for redaction process.</param>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactor.#ctor(System.IO.Stream,GroupDocs.Redaction.Options.LoadOptions)">
+      <summary>
+            Initializes a new instance of <see cref="T:GroupDocs.Redaction.Redactor" /> class for a password-protected document using stream.
+            </summary>
+      <param name="document">Source input stream.</param>
+      <param name="loadOptions">Options, including password.</param>
+      <example>
+        <para>The following example demonstrates how to open a password-protected documents using LoadOptions.</para>
+        <code lang="C#">
+     LoadOptions loadOptions = new LoadOptions("mypassword");
+     using (Redactor redactor = new Redactor(@"C:\sample.pdf", loadOptions))
+     {
+         // Here we can use document instance to perform redactions
+     }
+     </code>
+      </example>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactor.#ctor(System.IO.Stream,GroupDocs.Redaction.Options.LoadOptions,GroupDocs.Redaction.Options.RedactorSettings)">
+      <summary>
+            Initializes a new instance of <see cref="T:GroupDocs.Redaction.Redactor" /> class for a password-protected document using stream and settings.
+            </summary>
+      <param name="document">Source input stream.</param>
+      <param name="loadOptions">Options, including password.</param>
+      <param name="settings">Default settings for redaction process.</param>
+      <example>
+        <para>The following example demonstrates how to open a password-protected documents using LoadOptions.</para>
+        <code lang="C#">
+     LoadOptions loadOptions = new LoadOptions("mypassword");
+     using (Redactor redactor = new Redactor(@"C:\sample.pdf", loadOptions))
+     {
+         // Here we can use document instance to perform redactions
+     }
+     </code>
+      </example>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactor.Dispose">
+      <summary>
+    Releases resources.
+    </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactor.Apply(GroupDocs.Redaction.Redaction)">
+      <summary>
+            Applies a redaction to the document.
+            </summary>
+      <param name="redaction">An instance of <see cref="T:GroupDocs.Redaction.Redaction" /> to apply</param>
+      <returns>Success or failure and error message in this case</returns>
+      <example>
+        <para>The following example demonstrates applying a single redaction to the document.</para>
+        <code lang="C#">
+     using (Redactor redactor = new Redactor(@"D:\\test.docx"))
+     {
+        RedactorChangeLog result = redactor.Apply(new RegexRedaction(LookupStrings.SSNRegexPattern, new ReplacementOptions("[ssn]")));
+        if (result.Status != RedactionStatus.Failed)
+        {
+           redactor.Save();
+        };
+     }
+     </code>
+      </example>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactor.Apply(GroupDocs.Redaction.Redaction[])">
+      <summary>
+            Applies a set of redactions to the document.
+            </summary>
+      <param name="redactions">An array of redactions to apply</param>
+      <returns>Success or failure and error message in this case</returns>
+      <example>
+        <para>The following example demonstrates applying a list of redactions to the document.</para>
+        <code lang="C#">
+     using (Redactor redactor = new Redactor(@"D:\\test.docx"))
+     {
+        var redactionList = new Redaction[] 
+        {
+           new ExactPhraseRedaction(LookupStrings.ClientName, new ReplacementOptions("[client]")),
+           new ExactPhraseRedaction(LookupStrings.ClientAddress, new ReplacementOptions(System.Drawing.Color.Red)),
+           new RegexRedaction(LookupStrings.SSNRegexPattern, new ReplacementOptions("[ssn]")),
+           new RegexRedaction(LookupStrings.BankCardRegexPattern, new ReplacementOptions(System.Drawing.Color.Blue)),
+           // ... other redactions
+           new DeleteAnnotationRedaction("(?im:(use|show|describe))"),
+           new EraseMetadataRedaction(MetadataFilter.Author),
+           new MetadataSearchRedaction(LookupStrings.CompanyName, "--company--") 
+        }; 
+        RedactorChangeLog result = redactor.Apply(redactionList);
+        // false, if at least one redaction failed
+        if (result.Status != RedactionStatus.Failed)
+        {
+           redactor.Save();
+        };
+     }
+     </code>
+      </example>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactor.Apply(GroupDocs.Redaction.RedactionPolicy)">
+      <summary>
+            Applies a redaction policy to the document.
+            </summary>
+      <param name="policy">Redaction policy</param>
+      <returns>Success or failure and error message in this case</returns>
+      <example>
+        <para>The following example demonstrates how to apply a redaction policy to all files within a given inbound folder, and save to one of outbound folders - for successfully updated files and for failed ones.</para>
+        <code lang="C#">
+     RedactionPolicy policy = RedactionPolicy.Load("RedactionPolicy.xml");
+     foreach (var fileEntry in Directory.GetFileNames("C:\\Inbound")) 
+     {
+          using (Redactor redactor = new Redactor(Path.Combine("C:\\Inbound\\", fileEntry)))
+          {
+         	     RedactorChangeLog result = redactor.Apply(policy);
+         	     String resultFolder = result.Status != RedactionStatus.Failed ? "C:\\Outbound\\Done\\" : "C:\\Outbound\\Failed\\";
+         	     using (Stream fileStream = File.Open(Path.Combine(resultFolder, fileEntry), FileMode.Open, FileAccess.ReadWrite))
+        	     {
+                    redactor.Save(fileStream, new RasterizationOptions() { Enabled = false });
+        	     }        
+          }
+     }   
+     </code>
+      </example>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactor.Save">
+      <summary>
+            Saves the document to a file with the following options: AddSuffix = true, RasterizeToPDF = true.
+            </summary>
+      <returns>Path to redacted document</returns>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactor.Save(GroupDocs.Redaction.Options.SaveOptions)">
+      <summary>
+            Saves the document to a file.
+            </summary>
+      <param name="saveOptions">Options to add suffix or rasterize</param>
+      <returns>Path to redacted document</returns>
+      <example>
+        <para>The following example demonstrates how to save a document using SaveOptions.</para>
+        <code lang="C#">
+    using (Redactor redactor = new Redactor(@"C:\sample.pdf"))
+    {
+       // Document redaction goes here
+       // ...
+    
+       // Save the document with default options (convert pages into images, save as PDF)
+       redactor.Save();
+    
+       // Save the document in original format overwriting original file
+       redactor.Save(new SaveOptions() { AddSuffix = false, RasterizeToPDF = false });
+    
+       // Save the document to "*_Redacted.*" file in original format
+       redactor.Save(new SaveOptions() { AddSuffix = true, RasterizeToPDF = false });
+    
+       // Save the document to "*_AnyText.*" (e.g. timestamp instead of "AnyText") in its file name without rasterization
+       redactor.Save(new SaveOptions(false, "AnyText"));
+    }    
+    </code>
+      </example>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactor.Save(System.IO.Stream,GroupDocs.Redaction.Options.RasterizationOptions)">
+      <summary>
+            Saves the document to a stream, including custom location.
+            </summary>
+      <param name="document">Target stream</param>
+      <param name="rasterizationOptions">Options to rasterize or not and to specify pages for rasterization</param>
+      <example>
+        <para>The following example demonstrates how to set options for the rasterization process.</para>
+        <code lang="C#">
+    using (var redactor = new Redactor("SomePresentation.pptx"))
+    {
+        // redact sensitive data on the first slide 
+    
+        var rasterizationOptions = new RasterizationOptions();
+        rasterizationOptions.PageIndex = 0;
+        rasterizationOptions.PageCount = 1;
+        rasterizationOptions.Compliance = PdfComplianceLevel.PdfA1a;
+        using (var stream = File.Open(Path.Combine(@"C:\Temp", "PresentationFirstSlide.pdf")))
+        {
+            redactor.Save(stream, rasterizationOptions);
+        }
+    }      
+    </code>
+      </example>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactor.GeneratePreview(GroupDocs.Redaction.Options.PreviewOptions)">
+      <summary>
+    Generates preview images of specific pages in a given image format.
+    </summary>
+      <param name="previewOptions">Image properties and page range settings</param>
+      <example>
+        <para>The following example demonstrates how get a document preview using <see cref="T:GroupDocs.Redaction.Options.PreviewOptions" /> and both delegates.</para>
+        <code lang="C#">
+    CreatePageStream createDelegate = delegate (int pageNumber)
+    {
+        var pagePath = System.IO.Path.Combine(@"C:\Temp", string.Format("page_{0}.png", pageNumber));
+        return System.IO.File.Create(pagePath);
+    };
+    ReleasePageStream releaseDelegate = delegate (int pageNumber, System.IO.Stream pageStream)
+    {
+        // do anything with Stream, containing page preview
+        pageStream.Close();
+    };
+    var previewOptions = new PreviewOptions(createDelegate, releaseDelegate);
+    previewOptions.PreviewFormat = PreviewOptions.PreviewFormats.PNG;
+    previewOptions.Height = 640;
+    previewOptions.Width = 480;
+    previewOptions.PageNumbers = new int[] { 1 };
+    using (var redactor = new Redactor("C:\Temp\SourceFile.pdf"))
+    {
+        redactor.GeneratePreview(previewOptions);
+    }
+    </code>
+      </example>
+    </member>
+    <member name="M:GroupDocs.Redaction.Redactor.GetDocumentInfo">
+      <summary>
+    Gets the general information about the document - size, page count, etc.
+    </summary>
+      <returns>An instance of IDocumentInfo</returns>
+      <example>
+        <para>The following example demonstrates how to retrieve the general document information using <see cref="T:GroupDocs.Redaction.IDocumentInfo" />.</para>
+        <code lang="C#">
+    try
+    {
+        using (Redactor red = new Redactor(@"C:\Temp\testfile.doc"))
+        {
+            IDocumentInfo docInfo = red.GetDocumentInfo();
+            Console.WriteLine("Document size: {0}", docInfo.Size);
+            Console.WriteLine("Document format: {0}", docInfo.FileType.FileFormat);
+            Console.WriteLine("Document contains {0} pages", docInfo.PageCount);
+            foreach (PageInfo page in docInfo.Pages)
+            {
+                Console.WriteLine("Page {0} size is {1}x{2}", page.PageNumber, page.Width, page.Height);
+            }
+        }
+    }
+    catch (GroupDocs.Redaction.Exceptions.PasswordRequiredException)
+    {
+        Console.WriteLine("You are trying to access document which is password protected. Please, set the password.");
+    }
+    catch (GroupDocs.Redaction.Exceptions.IncorrectPasswordException)
+    {
+        Console.WriteLine("The provided password is not valid.");
+    }
+    </code>
+      </example>
+    </member>
+    <member name="T:GroupDocs.Redaction.RedactorChangeLog">
+      <summary>
+            Represents results for a list of redactions, passed to Apply() method of <see cref="T:GroupDocs.Redaction.Redactor" /> class.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.RedactorChangeLog.Status">
+      <summary>
+            Gets the final status of all applied redactions.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.RedactorChangeLog.RedactionLog">
+      <summary>
+            Gets the list of <see cref="T:GroupDocs.Redaction.RedactorLogEntry" /> instances.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.RedactorChangeLog.#ctor">
+      <summary>
+            Initializes a new instance of RedactorChangeLog class.
+            </summary>
+    </member>
+    <member name="T:GroupDocs.Redaction.RedactorLogEntry">
+      <summary>
+            Represents results of applying redaction.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.RedactorLogEntry.Result">
+      <summary>
+            Gets the result, returned by <see cref="T:GroupDocs.Redaction.Integration.DocumentFormatInstance" />.
+            </summary>
+    </member>
+    <member name="P:GroupDocs.Redaction.RedactorLogEntry.Redaction">
+      <summary>
+            Gets the reference to redaction and its options.
+            </summary>
+    </member>
+    <member name="M:GroupDocs.Redaction.RedactorLogEntry.#ctor(GroupDocs.Redaction.Redaction,GroupDocs.Redaction.RedactionResult)">
+      <summary>
+            Initializes a new instance of RedactorLogEntry class for redaction.
+            </summary>
+      <param name="redaction">Reference to redaction</param>
+      <param name="result">Redaction result, reported by format handler</param>
+    </member>
+  </members>
+</doc>

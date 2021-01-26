@@ -1,0 +1,131 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.0": {
+      "PDFTron.NETCore.Windows.x64/7.1.0.74119": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp2.1/PDFNetDotNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/PDFNetDotNetCore.dll": {}
+        },
+        "build": {
+          "build/PDFTron.NETCore.Windows.x64.targets": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PDFTron.NETCore.Windows.x64/7.1.0.74119": {
+      "sha512": "H6UVm1VxtYoKlWE3I61ndtP9Yd+Bf9JsiQcB7R+6QVzRsGbkEIy8Y9WoKHPTLa3VRO1r3VYlkjpe0IBTsdaOEQ==",
+      "type": "package",
+      "path": "pdftron.netcore.windows.x64/7.1.0.74119",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "GettingStarted_PDFNetC.pdf",
+        "build/PDFTron.NETCore.Windows.x64.targets",
+        "build/x64/PDFNetC.dll",
+        "legal.txt",
+        "lib/netcoreapp2.1/PDFNetDotNetCore.dll",
+        "license.pdf",
+        "pdftron.netcore.windows.x64.7.1.0.74119.nupkg.sha512",
+        "pdftron.netcore.windows.x64.nuspec",
+        "whatsnew.html"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.0": [
+      "PDFTron.NETCore.Windows.x64 >= 7.1.0.74119"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Александр\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Projects\\PDFTests\\PDFTronTest\\PDFTronTest.csproj",
+      "projectName": "PDFTronTest",
+      "projectPath": "C:\\Projects\\PDFTests\\PDFTronTest\\PDFTronTest.csproj",
+      "packagesPath": "C:\\Users\\Александр\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\PDFTests\\PDFTronTest\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Александр\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.0": {
+        "dependencies": {
+          "PDFTron.NETCore.Windows.x64": {
+            "target": "Package",
+            "version": "[7.1.0.74119, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[3.0.1, 3.0.1]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[3.0.3, 3.0.3]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[3.0.0, 3.0.0]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[3.0.0, 3.0.0]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

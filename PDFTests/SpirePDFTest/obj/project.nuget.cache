@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "iQgz7zZjLJGwOsZ7vRtuWAaHnaGGqRXWtv3KnJJgyZbn9E5xY2LL8nL0XTUch5FF0rsPmcq776XOez2haYKhsQ==",
+  "success": true,
+  "projectFilePath": "C:\\Projects\\PDFTests\\SpirePDFTest\\SpirePDFTest.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Александр\\.nuget\\packages\\freespire.pdf\\6.2.0\\freespire.pdf.6.2.0.nupkg.sha512",
+    "C:\\Users\\Александр\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\Александр\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Александр\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512",
+    "C:\\Users\\Александр\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}
